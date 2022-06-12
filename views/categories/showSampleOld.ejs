@@ -1,0 +1,75 @@
+<%- include('../partials/header') %>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
+<script type="text/javascript" src="/js/Dropbox-sdk.min.js"></script>
+<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="91x0vhk5lkdccy5"></script>
+<link rel="stylesheet" href="/css/db.css" type="text/css">
+
+
+
+<script>
+    //active menu highlight
+    $(document).ready(function(){
+      $('li.nav-item.dropdown.myCategories').attr("style", "background-color:orange;");
+      $('span.nav-link.dropdown-toggle.myCategories').attr("style", "color:#fff;");
+    });
+  </script>
+
+ 
+
+
+<h1  class="fullSpan">
+    <span class="darkOrange font-weight-bold">A1: Professional still media section (sample non-judge) </span>
+ <br>
+    <span  class="myCategorySpecific" >Didactic/Instructional </span>        
+     <span class="white">- Non-Commercial</span>       
+
+     </h1>
+
+  
+     <button type="button" class="btn btn-primary m-2  btn-lg  buttonReturn" style="margin-left:5%;" ><a href="/index">Back to entries in this category (for judges)</a></button>
+
+<main class="centerRatingPage">
+ 
+
+
+
+    <div class="row">
+       
+
+        <div id="displayDescriptions" class=" mt-4 ml-4" >
+            <h2 ><div class="orange entryDescriptors">
+                Title: 
+            </div>A1-001 Genetic and epigenetic alterations potentially drive a tumor’s progression </h2>
+          <div class="orange entryDescriptors">Medium or Software Used: </div>  <p>Autodesk 3ds Max, Adobe Illustrator and Photoshop</p>
+            <div class="orange entryDescriptors">Presentation format: </div><p> Print, online</p>
+            <div class="orange entryDescriptors">Primary audience: </div> <p> Medical Audience</p>
+            <div class="orange entryDescriptors">Intended purpose: </div><p>The intended purpose of this illustration was an editorial display of the research studying genetic and epigenetic alterations can be selected for and potentially drive a tumor’s progression.The arc is a measure of time. The bright star shapes on the timeline represent driver alterations in the growth of the cells. The teardrop represents the potential growth changes in the cell due to the tumor driver alteration at the start of the teardrop.  The progenitor tree graphic is stamped in the background to show the change in cells progeny or pluripotency.  </p>
+       </div>
+
+       <div id="displayImage">
+        <a href="https://biochromatic.com/images/biochromaticJournalCover.jpg"
+        class="dropbox-embed img-fluid imgScore"
+
+        alt="Sample Art Entry">
+    </a>	   
+
+  
+
+       
+    </div>
+
+    </div>
+
+    <div id="user"></div>
+
+    <%- include('../partials/questions_sample') %>
+
+   <button type="button" class="btn btn-primary m-2  
+   -lg  buttonReturn" style="margin-left:5%;" ><a href="/index">Back to entries in this category (for judges)</a></button>
+
+
+<script src="/js/dropboxFileThumbSort.js"  id="helper" data-name="<%= DBX_API_KEY %>"  type="module"> </script>
+ 
+</main>
+<%- include('../partials/footer') %>

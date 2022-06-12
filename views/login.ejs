@@ -1,0 +1,35 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container-logIn">
+    <div class="bgSlideshow">
+        <main class="d-flex justify-content-center m-4 singlePage align-items-center">
+            <div class="col-md-4 signInBox">
+                <h1 class="formField">Login</h1>
+                <form action="/login" method="POST" class="form-group">
+                    <label for="">  <span class="regAdmin">Username</span>
+                        <input type="text" name="username" placeholder="Username" class="form-control-lg m-2">
+                    </label>
+                   <label for="">  <span class="regAdmin">Password</span>
+                       <input type="password" name="password" placeholder="Password" class="form-control-lg m-2"></label>
+                   </label>
+                    
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit">
+                </form>
+                <a href="/forgot"><p class="midgrey forgotPassword">Forgot password?</p></a>
+                <!-- <a href="/register" %> ><p class="midgrey">Register</p></a> -->
+            </div>
+            <ul class="slideshow">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+        </main>
+    </div>
+
+
+</div>
+
+
+<%- include('partials/footer.ejs') %>

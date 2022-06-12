@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+
+<div class="mx-auto entryItem" >
+    <h1>Results</h1>
+    <h2> <%= artentries.category %> </h2>
+    <h3> <%= artentries.title %> </h3>
+    <div>
+        <img src="<%= artentries.image %>" class="img-fluid" alt="<%= artentries.title %>">
+    </div>
+    <div>
+        <p> <%= artentries.primaryAudience %> </p>
+        <p> <%= artentries.description %> </p>
+        <p> <%= artentries.format %> </p>
+    </div>
+    <hr>
+    
+</div>
+
+
+<div>
+    <button type="button" class="btn-btn" style="margin-left:5%;" ><a href="/artentries">Back to Home</a></button>
+    <a href="/artentries/<%= artentries._id %>/edit" class="btn-sm btn-warning">Edit</a> 
+</div>
+
+
+<%- include('partials/footer') %>
+
+

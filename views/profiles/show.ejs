@@ -1,0 +1,34 @@
+<%- include ('../partials/header.ejs') %>
+
+
+<h1  class="fullSpan">Profile</h1>
+
+<article class="appendixContainer">
+    <h1><%= user.firstName +" "+ user.lastName%>'s' Profile</h1>
+    <hr>
+   
+    <div class="row">
+        <div class="col-md-4">
+            <div class="Thumbnail">
+                <!-- <img src="<%= user.avatar %>" alt="user profile pic"> -->
+            <div class="caption"><a href="mailto:><%= user.email %>"><%= user.email %> </a></div>
+            </div>
+        
+        </div>
+        <div class="col-md-8">
+            <div class="My judging Categories">
+                <h3>My judging Categories</h3>
+                <hr>
+                <ul>
+            
+               
+                    <li><%= JudgeGroups %></li>
+            
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</article> 
+
+<%- include ('../partials/footer') %>

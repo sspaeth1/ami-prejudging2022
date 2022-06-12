@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/app.css"  media="only screen and (min-device-width: 481px)" />
+
+</head>
+
+<style>
+    .favAwardExcellence{
+        float: right;
+    }
+  .favAwardExcellence >  label {
+        display: block;
+        font-size: .5rem;
+        position: relative;
+        left: -17px;
+        top: 33px;
+        user-select: none;
+        -webkit-user-select: none;
+  }
+  .favAwardExcellence > input{
+      /* display:none; */
+      overflow:hidden;
+      display:inline-block;
+      text-indent: 999999px;
+      width:1em;
+  }
+  .favAwardExcellence > input::before{
+    text-indent: -999999px;
+      display: inline-block;
+      content: "\2605";
+      position: absolute;
+
+  }
+</style>
+
+<body>
+    <div class="col-lg-4 col-md-6 col-sm-6 mt-5 <%= findScore.id %>" id="item<%= i %>" >
+
+        <div class="img-thumbnail " >
+            <div class="favAwardExcellence">
+                <label for="AwardExcellence">AE</label>
+                <input type="radio" name="AwardExcellence">
+                <label for="AwardExcellence">AM</label>
+                <input type="radio" name="AwardMerit">
+              </div>
+        <a href="/artentries/<%= artentries[i]._id %>?<%= pageCategoryId %>" >
+                    <img src="./images/imageIcon.jpg" class="card-img-top" alt="Image for scoring" >
+                     </a>
+
+        </div>
+        <div class="artEntriesTitle">
+
+           <h3>Title of Piece</h3>
+            <p> <div class="orange font-weight-bolder threeQuarterRem ">Primary Audience: </div>Physicians and clinicions</p>
+            <p> <div class="orange font-weight-bolder threeQuarterRem ">Intended purpose: </div> Intended Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolores quasi, officia pariatur blanditiis vero voluptate, temporibus ad nostrum mollitia ea sapiente possimus hic illo! Dolores sit vero officia amet! Voluptatibus!
+            Voluptatem eveniet doloribus quo eligendi. Omnis maiores, eum debitis consequatur aliquid eos fugit ad illum a ullam distinctio amet veritatis minus ut quisquam officiis nobis delectus, tempora, illo sequi et.
+            Ducimus, neque in labore nihil blanditiis eum et, vero illum est ut enim saepe eaque quisquam sapiente laboriosam libero quam. Possimus quas dolorem, ea nihil molestias sequi hic? Dignissimos, nisi.
+            Suscipit provident cupiditate reiciendis dolore repellendus numquam amet fugit nihil magnam. Voluptatibus animi nostrum repellendus, aperiam eveniet, illo saepe maxime, optio rem possimus praesentium quod laudantium ullam nesciunt necessitatibus quaerat.
+            Tenetur, libero possimus quae delectus rerum quod consequatur quo enim neque debitis harum dicta alias minima facilis nisi magnam odio quos excepturi quasi ea error nesciunt nulla sunt. Iste, cum! </p>
+
+
+
+
+                      <div class="scoreThisEntry" id="unscored<%= artentries[i]._id %>" >
+                         <a href="/artentries/<%= artentries[i]._id %>?<%= pageCategoryId %>"  name="<%= artentries[i]._id %>"  class="btn btn-success lg"> Entry Scored: <%= score %></a></div>
+
+
+        </div>
+      </div>
+</body>
+</html>

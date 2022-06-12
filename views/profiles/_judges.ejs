@@ -1,0 +1,15 @@
+<%- include ('../partials/header.ejs') %>
+
+
+<h1  class="fullSpan">Profile</h1>
+
+<article class="appendixContainer">
+    <% user.forEach(function(user){ %>
+    <h1><%= user.firstName +" "+ user.lastName %>'s' Profile</h1>
+    <hr>
+    <% }); %>
+   
+   
+</article> 
+
+<%- include ('../partials/footer') %>

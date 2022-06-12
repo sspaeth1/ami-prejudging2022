@@ -1,0 +1,51 @@
+<%- include('../partials/header')%>
+
+
+
+<script>
+    //active menu highlight
+    $(document).ready(function(){
+      $('li.nav-item.dropdown.myCategories').attr("style", "background-color:orange;");
+      $('a.nav-link.dropdown-toggle.myCategories').attr("style", "color:#fff;");
+    });
+  </script>
+
+<h1  class="fullSpan">L: Student Motion Media -  Animation</h1>
+<article class="appendixContainer">
+  <p class="alert alert-warning alert-dismissible fade show" role="alert">The goal is to have this page dynamically populate from the submissions on AMI.org via the dropbox folders  
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </p>
+ 
+   <div class="winVar" data="window.localStorage.getItem('category')"></div>
+ <script> console.log($('div.winVar').attr('data')) </script>
+   <div class="row entries">
+    <% artentries.forEach(function(artentries){ 
+      if( artentries.category === "L"){ %>
+
+      <div class="col-lg-4 col-md-6 col-sm-6 mt-5" id="<%= artentries.name %>"> 
+        <div class="img-thumbnail " >
+          <a href="/artentries/<%= artentries._id %>">  
+            <img src="<%= artentries.image%>" class="card-img-top" alt="Image for scoring" > </a> 
+        </div>
+        <div class="artEntriesTitle">
+            <h5>
+               <%=  artentries.title.substring(0,50) %>...
+            </h5>
+            <p> <div class="orange font-weight-bolder threeQuarterRem ">Primary Audience: </div> <%= artentries.primaryAudience %></p>
+            <p> <div class="orange font-weight-bolder threeQuarterRem ">Intended purpose: </div><%= artentries.intended_purpose.substring(0,50) %>... </p> 
+            <!-- <div class="scoreThisEntry">   <a href="/artentries/<%= artentries._id %>" class="btn btn-success lg"> Scored</a>   -->
+            <div class="scoreThisEntry">   <a href="/artentries/<%= artentries._id %>"  name="{{this.id}}"  class="btn btn-primary lg"> Score this entry</a>  
+              </div>       
+        </div>
+      </div>
+      <% } %>
+    <% });  %>  
+    
+  </div>
+</div>
+</article>
+
+
+<%- include ('../partials/footer') %>

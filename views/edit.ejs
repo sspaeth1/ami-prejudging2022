@@ -1,0 +1,49 @@
+<%- include('partials/header')%>
+
+<div class="container">
+
+    <h1 class="d-flex justify-content-center mt-5">Edit <%= artentries.title %> </h1>
+      <div class="d-flex justify-content-center">
+        <form class="" action="/artentries/<%= artentries._id %>?_method=PUT" method="POST">
+         
+          <label for=""> <span class="regAdmin">Category</span>
+               <input class="form-control m-3" type="text" name="artentries[category]" value="<%= artentries.category %>" placeholder="category">
+          </label> 
+            <label for=""> <span class="regAdmin">Tile</span>
+               <input class="form-control m-3" type="text" name="artentries[title]" value="<%= artentries.title %>" placeholder="Title">
+            </label> 
+            <label for=""> <span class="regAdmin">Image URL</span>
+              <input  class="form-control m-3" type="text" name="artentries[image]" value="<%= artentries.image %>" placeholder="Image Url">
+          </label> 
+          <label for=""> <span class="regAdmin">Client</span>
+              <input  class="form-control m-3" type="text" name="artentries[client]" value="<%= artentries.client %>" placeholder="Client">
+          </label> 
+          <label for=""> <span class="regAdmin">Medium or Software used</span>
+                   <input class="form-control m-3" type="text" name="artentries[medium_software]" value="<%= artentries.medium_software %>" placeholder="Medium or software used">
+         </label> 
+          <label for=""> <span class="regAdmin">Presentation Format</span>
+             <input class='form-control m-3' type="text" name="artentries[presentation_format]"  value="<%= artentries.presentation_format %>" placeholder="Presentation format">
+         </label> 
+          <label for=""> <span class="regAdmin">Primary Audience</span>
+             <input class='form-control m-3' type="text" name="artentries[primaryAudience]"  value="<%= artentries.primaryAudience %>" placeholder="Primary Audience">
+          </label> 
+          <label for=""> <span class="regAdmin">Intended Purpose</span>
+              <textarea class='form-control m-3' type="textarea" name="artentries[intended_purpose]"  value="<%= artentries.intended_purpose %>" placeholder="Intended Purpose"></textarea>
+          </label> 
+          
+              <a href="../images/logo.png" class=""></a>
+        <span>
+          <button class="btn btn-primary lg btn-block m-3" type="post" name="button">Edit Entry</button>
+        
+          <form action="/artentries/<%= artentries._id %>?_method=DELETE" method="POST" >
+              <button class="btn-sm btn-danger btn-block m-3"> Delete</button>
+          </form>
+        </span>
+
+      </form>
+    
+  </div>
+      <a href="/artentries" class="d-flex justify-content-center">Go Back</a>
+</div>
+
+<%- include('partials/footer') %>

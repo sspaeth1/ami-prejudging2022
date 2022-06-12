@@ -1,0 +1,45 @@
+<%- include('partials/header.ejs') %>
+
+<script>
+  $(document).ready(function(){
+    $("li.nav-item.dropdown.appendix").attr("style", "background-color:orange;");
+    $("span.nav-link.dropdown-toggle.appendix").attr("style", "color:#fff;");
+      });
+</script>
+
+<h1 class="fullSpan">Printable Judging Forms <span class="white"> you may want to open these in a new tab while you score entries </span> </h1>
+
+
+<main class="justify-content-center m-4 singlePage align-items-center">
+  <section>
+    <h2>Download Ballots</h2>
+   
+      <h4> <a href="images/pdf/Judging_Form_General_2017.pdf">General Judging Form </a> </h4>
+      <h4> <a href="images/pdf/Judging_Form_Book_2017.pdf">Book Judging Form </a> </h4>
+      <h4> <a href="images/pdf/Judging_Form_Interactive_2017.pdf">Interactive Judging Form </a> </h4>
+      <h4> <a href="images/pdf/Judging_Form_Animation_2017.pdf">Animation Judging Form </a> </h4>
+
+    <hr>
+  </section>
+
+  <section>
+    <embed style="margin-right: 5%" Id="AwardWinnersBallot" src="images/pdf/Judging_Form_General_2017.pdf"  width="90%"  height="700px" alt="Judging Form General">
+    <embed style="margin-right: 5%" Id="AwardWinnersBallot" src="images/pdf/Judging_Form_Book_2017.pdf"  width="90%"  height="700px" alt="Judging Form Book">
+    <embed style="margin-right: 5%" Id="AwardWinnersBallot" src="images/pdf/Judging_Form_Interactive_2017.pdf"  width="90%"  height="700px" alt="Judging Form Interactive">
+     <embed style="margin-right: 5%" Id="AwardWinnersBallot" src="images/pdf/Judging_Form_Animation_2017.pdf"  width="90%"  height="700px" alt="Judging Form Animation">
+  </section>
+  
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include('partials/footer.ejs') %>

@@ -1,0 +1,41 @@
+<%- include('partials/header.ejs') %>
+
+
+<script>
+    //active menu highlight
+     $(document).ready(function(){
+            $('a[href="/awardWinners"]').attr("style", "background-color:orange; color:#fff;");
+         });
+  </script>
+
+
+<h1  class="fullSpan"> Award Winners</h1>
+
+<div class="centerTextContainer">
+    <p class="alert alert-warning alert-dismissible fade show" role="alert"> Sample data, page to change later with dynamic content
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </p>
+        <div class="row">
+            <!-- <div class="col-6">
+                <div class="col-3" style="background-color: rgb(126, 170, 38); height:40px; width: 100px; border-radius: 5px; float: left;"></div>
+                <div class="col-3" style="background-color: rgb(214, 185, 19); height:40px; width: 100px; border-radius: 5px;"></div>            
+            </div>    -->
+            <div class="col-6 d-flex font-justify-right">
+                <button type="button" class="btn btn-warning btn-lg m-3">Download</button>
+
+            </div>   
+            <div class="container-iframe">
+                <div class="responsive-iframe">
+                    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRaKVmKiFPRGu5KkPZiRvd-euuzd9oWnJeH8muELiBV786sooiR07l65iYy0m-FSXJkZlAtLXWg62t5/pubhtml?widget=true&amp;headers=false"> </iframe>
+                </div>
+           </div>
+        </div>
+       
+        
+</div>
+
+
+
+    <%- include('partials/footer.ejs') %>

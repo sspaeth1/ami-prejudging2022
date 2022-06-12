@@ -1,0 +1,16 @@
+'
+<% for(let i =0 ; i < JudgeGroups.length  ; i++){  %>
+  <form action="/awardWinners" method="POST" class="Award_of_Excellence">
+    <label for="Award_of_Excellence"> Award of Excellence:        </label>
+<select name="Award_of_Excellence" id="Award_of_Excellence">
+   <% for( let j = 0; j < artentries.length ; j++){ 
+      if( letterIndexKeys[i]  === artentries[j].category){ %>
+    <option value=""> <%= artentries[j].title %> </option>
+   <% } %> 
+  <% } %> 
+</select> 
+<span><img src="/images/x.png" class="removeAward" onclick="removeAwardExcellence()"  alt="X remove item"> </span>
+<input type="submit" class="awardExcellence btn btn-primary">  
+</form>
+<% } %>
+'

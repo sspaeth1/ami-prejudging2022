@@ -1,0 +1,376 @@
+<%- include('partials/header.ejs') %>
+
+<script>
+  $(document).ready(function(){
+    $("li.nav-item.dropdown.appendix").attr("style", "background-color:orange;");
+    $("span.nav-link.dropdown-toggle.appendix").attr("style", "color:#fff;");
+      });
+</script>
+
+
+<script>
+  $( function() {
+    $( "#accordionA" ).accordion({
+      collapsible: true,
+      heightStyle: "content"
+    });
+
+    $( "#accordionF" ).accordion({
+      collapsible: true,
+      heightStyle: "content"
+    });
+
+    $( "#accordionG" ).accordion({
+      collapsible: true,
+      heightStyle: "content"
+    });
+
+    $( "#accordionI" ).accordion({
+      collapsible: true,
+      heightStyle: "content"
+    });
+
+    $( "#accordionL" ).accordion({
+      collapsible: true,
+      heightStyle: "content"
+    });
+
+    $( "#accordionM" ).accordion({
+      collapsible: true,
+      heightStyle: "content"
+    });
+  
+  
+  });
+  
+  </script>
+
+
+<h1  class="fullSpan"> Appendix A –  Salon Categories</h1>
+
+<article class="appendixContainer">
+  <h1>Professional Categories</h1>
+  <p>Professional entries must be medical, surgical, pathological, health-sciences or life-sciences in content and have been completed as part of a professional assignment for a specific purpose.</p>
+
+
+
+
+  <!-- <div id="accordion"> -->
+
+    
+
+  <div class="card categories">
+    <div class="card-header" id="professionalCategories"></div>
+        <h3 class="salonCategories">Professional still media section</h3> 
+      
+            <div id="accordion">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                <button class="btn btn-link " data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    A: Didactic/Instructional
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  <p>Medical illustrations that are primarily instructional in nature, which depictsurgical, anatomical, pathological, or bio-scientific structures, functions, and/or processes. May be color,black and white continuous tone, or black and white line medical illustrations.</p>
+                </div>
+                      <div id="accordionA"> 
+                        <h4 class="orange font-weight-bold">A-1: Non-Commercial</h4>
+                        <div>
+                            <p>Any didactic work that is produced primarily for the academic marketplace or other not-for-profit entities.</p>
+                              <ul>
+                                 <li>Example 1: Figures for a peer-reviewed academic journal, or medical/surgical or health sciences textbook or atlas.</li>
+                                 <li> Example 2: Patient education materials for not-for-profit entities.</li>
+                              </ul>
+                        </div>
+                      <h4 class="orange font-weight-bold">A-2: Commercial</h4>
+                        <div>
+                            <p>Any didactic work that is produced primarily for the commercial marketplace.</p> 
+                            <ul>
+                                <li> Example 1: Illustrations for a pharmaceutical, biotechnology, or medical/surgical device manufacturing company explaining biologic or pathologic processes.</li>
+                                <li> Example 2: Illustrations for a pharmaceutical, biotechnology, or medical/surgical device manufacturing company explaining how something is done.</li>
+                            </ul>   
+                        </div>
+                  </div>
+              </div>
+
+
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                     B: Editorial
+                    </button>
+                  </h5>
+                </div>
+                  <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        <p>Illustrations that summarize the content of a publication or article by calling attention to the subject matter of the same, either as cover or inside art. All cover art, whether for a journal, magazine, or book, should be entered into this category, regardless of content.</p>
+                      </div>
+                </div>
+              </div>
+            
+
+              <div class="card">
+                <div class="card-header" id="headingThree">
+                  <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                      C: Advertising and Marketing/Promotional
+                    </button>
+                  </h5>
+                </div>
+                  <div id="collapseThree" class="collapse " aria-labelledby="headingThree" data-parent="#accordion">
+                    <div class="card-body">
+                        <p>Illustrations created to attract attention to or show support for a product, business or service in the pharmaceutical, biotechnology, or medical/surgical device manufacturing industries, and all that are similar. These are generally intended to aid in selling or promoting a product/service or creating brand recognition. 
+                          <span class="text-italic">Work such as MOAs, sell sheets, patient information handouts or wall charts, etc. should be entered into this category, regardless of content.</span> </p>
+                      </div>
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header" id="headingFour">
+                  <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                      D: Medical-Legal
+                    </button>
+                  </h5>
+                </div>
+                  <div id="collapseFour" class="collapse " aria-labelledby="headingFour" data-parent="#accordion">
+                    <div class="card-body">
+                        <p>Illustrations produced to provide or accompany medical documentation in legal proceedings.</p>
+                      </div>
+                </div>
+              </div>
+
+              
+              <!-- <div class="card">
+                <div class="card-header" id="headingFive">
+                  <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                      E: Illustrated Text (Traditionally printed book)
+                    </button>
+                  </h5>
+                </div>
+                  <div id="collapseFive" class="collapse " aria-labelledby="headingFive" data-parent="#accordion">
+                    <div class="card-body">
+                        <p>Illustrated books that are medical, surgical, anatomical, pathological, health-related, or life sciences in nature. Books are judged on the quality and usage of their illustrations, and not on their graphic design.
+                          <span class="text-italic">(Note: Entries submitted in this category that do not include illustrations shall not be considered for awards.)</span> </p>
+                      </div>
+                </div>
+              </div> -->
+        </div>
+  </div>
+
+<h3 class="salonCategories"> Professional Motion Media</h3> 
+    
+<div id="accordion">
+  <div class="card">
+    <div class="card">
+      <div class="card-header" id="headingSeven">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+           F. Animation 
+          </button>
+        </h5>
+      </div>
+      <div id="collapseSeven" class="collapse " aria-labelledby="headingSeven" data-parent="#accordion">
+        <div class="card-body">
+          <p> Visualizations of surgical, anatomical, pathological, health-related or bio-scientific structures, functions, and/or processes. May be 2D or 3D.</p>
+        </div>
+              <div id="accordionF"> 
+                <h4 class=" font-weight-bold">F-1: Didactic/Instructional – Non-Commercial</h4>
+                <div>
+                     <p>Any work that is didactic / instructional in nature and produced primarily for the academic marketplace or other not-for-profit entities.</p>
+                          <ul>
+                            <li>Example 1: Figures for a peer-reviewed academic journal, or medical/surgical or health sciences textbook or atlas.</li>
+                            <li>Example 2: An animation created as part of a research grant or other not-for-profit entities such as NLM/NIH, DARPA and The American Red Cross.</li>
+                          </ul>
+                </div>
+              <h4 class=" font-weight-bold">F-2: Didactic/Instructional – Commercial</h4>
+                <div>
+                    <p>Any work that is didactic / instructional in nature and produced primarily for the commercial marketplace.</p> 
+                    <ul>
+                        <li>Example 1: A Mechanism of Action/Mechanism of Disease animation created for a pharmaceutical, biotechnology, or medical/surgical device manufacturing company.</li>
+                        <li>Example 2: Animations created for a publishing company as part of a textbook series.</li>
+                    </ul>   
+                </div>
+                <h4 class=" font-weight-bold">F-3: Advertising and Marketing/Promotional</h4>
+                <div>
+                    <p>Animations created to attract attention to or show support for a product, business or service in the pharmaceutical, biotechnology, or medical/surgical device manufacturing industries, and all that are similar. These are generally intended to aid in selling or promoting a product/service or creating brand recognition. (NO PERSONAL OR COMPANY DEMOS PLEASE.)</p> 
+                </div>
+                <h4 class=" font-weight-bold">F-4: Medical-Legal</h4>
+                <div>
+                    <p>Animations produced to provide or accompany, medical documentation in legal proceedings.</p> 
+                </div>
+            </div>
+         </div>
+       </div>
+    </div>
+ </div>
+
+      <h3 class="salonCategories">Professional Interactive Media</h3> 
+      
+      <div id="accordion">
+        <div class="card">
+          <div class="card"></div>
+            <div class="card-header" id="headingSix">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                G. Interactive Media 
+                </button>
+              </h5>
+            </div>
+            <div id="collapseSix" class="collapse " aria-labelledby="headingSix" data-parent="#accordion">
+              <div class="card-body">
+                <p> Website or stand-alone interactive media entries.</p>
+              </div>
+                    <div id="accordionG"> 
+                      <h4 class="orange font-weight-bold">G-1: Didactic/Instructional – Non-Commercial</h4>
+                      <div>
+                            <p>Any work that is didactic / instructional in nature and produced primarily for the academic marketplace or other not-for-profit entities.</p>
+                                <ul>
+                                  <li>Example 1: An interactive application created as part of a public service/public health announcement.</li>
+                                  <li>Example 2: An interactive application created as part of a research grant or other not-for-profit entities.</li>
+                                </ul>
+                      </div>
+                    <h4 class="orange font-weight-bold">G-2: Didactic/Instructional – Commercial</h4>
+                      <div>
+                          <p>Any work that is didactic / instructional in nature and produced primarily for the commercial marketplace.</p> 
+                          <ul>
+                              <li>Example 1: Interactive application/s created as part of a pharmaceutical trade show booth.</li>
+                              <li>Example 2: Interactive application/s created for a publishing company as part of a textbook series.</li>
+                          </ul>   
+                      </div>
+                      <h4 class="orange font-weight-bold">G-3: Advertising and Marketing/Promotional</h4>
+                      <div>
+                          <p>Interactive programs, apps, websites, or kiosks created to attract attention to, show support for, or is intended to aid directly or indirectly in the sale of a product, business, or service for the pharmaceutical, biotechnology, or medical/surgical device manufacturing industries, and all that are similar. (PERSONAL OR COMPANY DEMO REELS ARE NOT ELIGIBLE FOR AWARDS.)</p> 
+                      </div>
+                      <h4 class="orange font-weight-bold">G-4: Gaming</h4>
+                      <div>
+                          <p>A digital interactive submission that presents the user or users with challenges or problems to undertake for fun, discovery, or education related to medicine, health sciences or life sciences.</p> 
+                      </div>
+                      <h4 class="orange font-weight-bold">G-5 Interactive Textbook</h4>
+                      <div>
+                          <p>A fully digital illustrated text or journal, of surgical, anatomical, pathological, health-related or bio-scientific structures, functions, and/or processes, that when completed is viewed using interactive electronic means.</p> 
+                          <ul>
+                            <li>Example: iBooks, eBooks, interactive pdfs.</li>
+                          </ul>   
+                        </div> 
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div> 
+  </div>
+</article>
+
+<!-- ///Student/// -->
+
+<article class=" appendixContainer topMargin20 borderTop">
+<div class=" categories">
+   <h1>Student Categories</h1>
+    <p>Student Entries to the AMI Salon must be work completed in fulfillment of academic assignments/requirements and evaluated by faculty.
+      <br />
+      <br />
+      To eliminate confusion regarding Student Salon artwork, the following policy has been established.</p>
+      <ol class="indent">
+        <li>Students may enter artwork if they are currently enrolled in a medical illustration program.</li>
+        <li>Students that have graduated are eligible to enter curriculum-related artwork in the Student Salon during the year that is the same year as their graduation. (i.e., Artwork created by a person that graduated in 2018, can be entered in the 2018 AMI Student Salon.) Student members may also continue their student membership through the first annual meeting following their graduation (i.e., a Nov. 2017 graduate may enter the 2018 Student Salon based on their continuing student status.)  </li>
+      </ol>
+      <p>Students MAY NOT enter artwork in a professional category in the same year that they enter in a student category.</p>
+      <p>Submissions that do not meet the above requirements will NOT be considered for an award.</p>
+     
+      <div class="card categories">
+        <div class="card-header" id="professionalCategories"></div>
+          <h3 class="salonCategories">Student Still Media Section</h3> 
+    
+            <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingSeven">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                      I. Didactic/Instructional 
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven" data-parent="#accordion">
+                  <div class="card-body">
+                        <div id="accordionI"> 
+                          <h4 class="font-weight-bold">I-1: Anatomical/ Pathological </h4>
+                          <div>
+                              <p>Illustration of anatomy/pathology for identification purposes.</p>
+                                <ul>
+                                  <li>Example 1: to demonstrate normal or pathological anatomy as it appears, such as would be found in an atlas of anatomy.</li>
+                                  <li>Example 2: to depict a given pathology or disease process as a means to help a patient identify/recognize his/her condition, as would be found in an informational pamphlet or wall chart.</li>
+                                </ul>
+                          </div>
+                          <h4 class="font-weight-bold">I-2:  Surgical/Clinical Procedures</h4>
+                          <div>
+                              <p>Multi-part or “critical step” illustrations depicting a multi-part procedure</p>
+                                <ul>
+                                  <li>Example 1: depictions of a surgical procedure/processes.</li>
+                                  <li>Example 2: clinical testing (e.g. Orthopedics: Knee Instability Tests) or clinical procedures (e.g. injection guides or tissue sampling techniques).</li>
+                                </ul>
+                          </div>
+                          <h4 class="font-weight-bold">I-3: Molecular/Biological/Life Sciences</h4>
+                          <div>
+                              <p>Illustrations depicting human or animal cellular processes, lifecycles, behaviors, or functions</p>
+                                <ul>
+                                  <li>Example 1: depictions of the normal or pathological function of an organ or system.</li>
+                                  <li>Example 2: depictions of chemical/molecular/cellular component interactions and processes at the cellular or subcellular level.</li>
+                                </ul>
+                          </div>
+                          <h4 class="font-weight-bold">J: Editorial </h4>
+                          <div>
+                              <p>Illustrations designed to summarize the content of a publication or article by calling attention to the subject matter of the same, either as cover or inside art. All cover art, whether for a journal, magazine, or book, should be entered into this category, regardless of content.</p>
+                          </div>
+                          <h4 class="font-weight-bold">K: Advertising and Marketing/Promotional</h4>
+                          <div>
+                              <p>Illustrations, didactic or otherwise, designed to attract attention to or show support for a product, business or service in the pharmaceutical, biotechnology, or medical/surgical device manufacturing industries, and all that are similar. These mirror professional projects that are generally intended to aid in selling or promoting a product/service or creating brand recognition. Projects such as MOAs, sell sheets, patient information handouts or wall charts, etc. should be entered into this category, regardless of content.</p>
+                          </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+          <div class="card">
+            <div class="card-header" id="headingEight">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseEight"  aria-expanded="true" aria-controls="collapseEight">
+                  L. Student Motion Media
+                </button>
+              </h5>
+            </div>
+            <div id="collapseEight" class="collapse" aria-labelledby="collapseEight" data-parent="#accordion">
+            <div id="accordionL"> 
+              <h4 class="font-weight-bold">L. Animation</h4>
+              <div>
+                  <p>All 2D and 3D motion media where the end result is a linear motion graphic presentation that features medical visualizations of surgical, anatomical, pathological, health-related or bio-scientific structures, functions, and/or processes. (Note: There are no subcategories for the Student Animation submissions.)</p>
+            </div>
+            </div>
+          </div>
+
+
+            <div class="card">
+              <div class="card-header" id="headingNine">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseNine"   aria-expanded="false" aria-controls="collapseNine">
+                    M. Student Interactive Media Section
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseNine" class="collapse" aria-labelledby="collapseNine" aria-expanded="false" data-parent="#accordion">
+              <div id="accordionM"> 
+                <h4 class="font-weight-bold">M. Interactive</h4>
+                <div>
+                    <p> All media that involves user interaction to progress through content. Materials may have video/animation/audio imbedded as part of the whole presentation. Examples include websites, interactive kiosks, patient/physician education modules, real time 3D-interactives, e-publications and gaming. (Note: There are no subcategories for the Student Interactive submissions.)</p>
+              </div>
+              </div>
+            </div>
+
+  
+</article>
+
+<%- include('partials/footer.ejs') %>

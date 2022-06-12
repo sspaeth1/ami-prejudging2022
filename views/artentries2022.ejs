@@ -1,0 +1,143 @@
+<%- include('partials/header')%>
+
+<script>
+   $(document).ready(function(){
+          $("li.nav-item.dropdown.myCategories").attr("style", "background-color:orange;");
+          $("span.nav-link.dropdown-toggle.myCategories").attr("style", "color:#fff;");
+       });
+</script>
+
+<h1  class="fullSpan">
+  <span class="darkOrange font-weight-bold"><%=  pageCategoryId %>: <%= categorySpecifics[letterIndexKeys[0][pageCategoryId]].type  %> </span>
+<br>
+  <span  class="myCategorySpecific" ><%= categorySpecifics[letterIndexKeys[0][pageCategoryId]].subtype  %></span>
+   <span class="white"><%=  categorySpecifics[letterIndexKeys[0][pageCategoryId]].specific  %></span>
+
+   </h1>
+
+
+
+<script>
+    let url = new URLSearchParams(window.location.search);
+  let pageCategoryId = url.get("categoryId");
+
+  let getEl = document.querySelector("#setPageCategoryId");
+  getEl.setAttribute("data", pageCategoryId);
+</script>
+
+
+
+<script>
+  //save radio selection
+
+  function awardMeritChecked( event, entryId){
+      const el =  event.target;
+      if(el.checked) {
+          const entryId = window.location.pathname.substring(12);
+          const selectedRadio = el.value;
+          const getQuestionNum = el.parentElement.parentElement.classList[0];
+          const user =  $("#user").text();
+          const category = $('h1.fullSpan span').text();
+          const changeColorLive = $('.ui-state-active').attr('style', 'background: #467946')
+
+
+          console.log({ entryId, getQuestionNum, selectedRadio, notes});
+
+          $.ajax('/score', {
+          type: 'POST',
+          data: { getQuestionNum: getQuestionNum,
+                  selectedRadio: selectedRadio,
+                  entryId: entryId,
+                  category: category,
+
+               },
+          dataType: 'json',
+          success: function (data, status, xhr) {
+              console.log(data);
+              console.log(user);
+              console.log(entryId);
+          },
+          error: function (jqXhr, textStatus, errorMessage) {
+              console.log(errorMessage);
+              }
+              });
+      }
+   }
+</script>
+
+<div id="setPageCategoryId" data=""></div>
+
+<article class="appendixContainer">
+
+   <div class="row entries">
+    <% artentries.forEach( (artentry, i) => { %>
+
+
+      <div class="col-lg-4 col-md-6 col-sm-6 mt-5 <%= findScore.id %>" id="item<%= i %>" >
+        <div class="img-thumbnail " >
+          <div class="favAwardExcellence">
+            <label for="AwardExcellence">AE</label>
+            <input type="radio" name="AwardExcellence">
+            <label for="AwardExcellence">AM</label>
+            <input type="radio" name="AwardMerit">
+          </div>
+        <a href="/artentries/<%= artentries[i]._id %>?<%= pageCategoryId %>" >
+
+
+         <%   if(  artentries[i].category=== "A1" ||
+                  artentries[i].category=== "A2" ||
+                  artentries[i].category=== "B" ||
+                  artentries[i].category=== "C" ||
+                  artentries[i].category=== "D" ||
+                  artentries[i].category=== "E" ||
+                  artentries[i].category=== "H" ||
+                  artentries[i].category=== "I1" ||
+                  artentries[i].category=== "I2" ||
+                  artentries[i].category=== "I3" ||
+                  artentries[i].category=== "J" ||
+                  artentries[i].category=== "K"){   %>
+                    <img src="<%= artentries[i].link %>" class="card-img-top" alt="Image for scoring" >
+                     </a>
+                <%  } else { %>
+                        <video class="card-img-top"   controls>
+                          <source src="<%= artentries[i].link %>" type="video/mp4">
+
+                          Your browser does not support the video tag.
+                        </video>
+                      </a>
+                <%  } %>
+
+
+
+
+
+
+        </div>
+        <div class="artEntriesTitle">
+
+           <h3><% if (artentries[i].title.toString().length <= 100){ %><%= artentries[i].title  %><% } else{ %><%= artentries[i].title.substring(0,100)+"..." %><% } %></h3>
+            <p> <div class="orange font-weight-bolder threeQuarterRem ">Primary Audience: </div> <%= artentries[i].primaryAudience %></p>
+            <p> <div class="orange font-weight-bolder threeQuarterRem ">Intended purpose: </div><%= artentries[i].intended_purpose.substring(0,50) %>... </p>
+
+
+
+
+            <% if( artentries[i].judges[currentUser.id])  {  %>
+                      <div class="scoreThisEntry" id="unscored<%= artentries[i]._id %>" >
+                         <a href="/artentries/<%= artentries[i]._id %>?<%= pageCategoryId %>"  name="<%= artentries[i]._id %>"  class="btn btn-success lg"> Entry Scored: <%= score %></a></div>
+
+            <% }else{  %>
+              <div class="scoreThisEntry" id="unscored<%= artentries[i]._id %>" >   <a href="/artentries/<%= artentries[i]._id %>?<%= pageCategoryId %>"  name="<%= artentries[i]._id %>"  class="btn btn-primary lg"> Score this entry  <%=  %> </a></div>
+              <% } %>
+
+        </div>
+      </div>
+      <% }); %>
+
+
+  </div>
+</div>
+</article>
+
+
+<%- include ('partials/footer') %>

@@ -1,0 +1,64 @@
+<%- include('partials/header.ejs') %>
+
+<style> body{background-color:#FFA100} </style>
+
+      
+<main class="d-flex justify-content-center m-4 singlePage align-items-center">
+    <div class="col-md-8 signInBox">
+        <h1 class="formField">Register as a judge</h1>
+        <p class="midgrey _1rem">Please use alphanumerica with no spaces or the following characters $.%,|</p>
+        <form action="/register" method="POST" class="form-group ">
+            <label for="username">  <span class="regAdmin">Username</span>
+                <input required type="text" name="username" placeholder="Username"  class="form-control-lg m-2" autofocus>
+            </label>
+           <label for="password">  <span class="regAdmin">Password</span>
+                <input required type="password" name="password" placeholder="Password" class="form-control-lg m-2">
+           </label>
+           <label for="firstName"> <span class="regAdmin">First name</span>
+                <input required type="text" name="firstName" placeholder="First Name" class="form-control-lg m-2">
+            </label>
+            <label for="lastName"> <span class="regAdmin">Last name </span>
+                <input required type="text" name="lastName" placeholder="Last Name" class="form-control-lg m-2">
+            </label>
+            <label for="email"> <span class="regAdmin">e-mail</span>
+                <input required type="email" name="email" placeholder="john@doe.com" class="form-control-lg m-2">
+            </label>
+            <label for="avatar"> <span class="regAdmin">Avatar</span>
+                <input  type="text" name="avatar" placeholder="URL to your pic" class="form-control-lg m-2">
+            </label>
+            <!-- <label for="assignedCategories" class=""> <span class="regAdmin">assignedCategories</span>
+                <input  type="text" name="assignedCategories" placeholder=" A-1, A-2, B, C ..." class="form-control-lg m-2">
+            </label> -->
+            <label for="judgingGroup" class=""> <span class="regAdmin">Judging group</span>
+               <select name="judgingGroup" id="judgingGroup">
+                   <option value="0">-Select an Group-</option>
+                   <option value="group1">Group 1</option>
+                   <option value="group2">Group 2</option>
+                   <option value="group3">Group 3</option>
+                   <option value="group4">Group 4</option>
+               </select>
+            </label> 
+            <label for="judge">  <span class="regAdmin">Judge?</span>
+                <input  type="checkbox" name="judge" value="true" placeholder="Check yes for judge" class="form-control-lg m-2">
+            </label>
+
+            
+            <input type="submit" class="btn btn-lg btn-primary m-2" value="Register">
+        </form>
+        <p class="midgrey">Already registered? <a href="/register"> >Login</p></a> </p> 
+    </div>
+</main>
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<%- include('partials/footer.ejs') %>

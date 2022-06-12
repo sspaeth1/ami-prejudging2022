@@ -1,0 +1,149 @@
+<%- include('partials/header.ejs') %>
+
+<script src="../js/headerColor.js" type="text/javascript"></script>
+
+
+
+<script>
+
+  $(document).ready(function() {
+    $('p').each(function() {
+      var trimLength = 100;
+      var trimMargin = 1.2; // don't trim just a couple of words
+      if ($(this).text().length > (trimLength * trimMargin)) {
+        var text = $(this).text();
+        var trimPoint = $(this).text().indexOf(" ", trimLength);
+        var newContent = text.substring(0, trimPoint) + '<span class="read-more">' + text.substring(trimPoint) + '<a class="less" href="#">(less)</a></span><span class="toggle">... <a class="more" href="#">(more)</a></span>';
+        $(this).html(newContent);
+      }
+    });
+    var originHeight;
+    $('.toggle a.more').click(function(e) {
+      e.preventDefault();
+      var para = $(this).closest('p.more');
+      var initialHeight = $(this).closest('p.more').innerHeight();
+      originHeight=originHeight||initialHeight;
+      para.find('.read-more').show();
+      para.find('.toggle').hide();
+      var newHeight = para.innerHeight();
+      para.css('max-height', initialHeight + 'px');
+      para.animate({
+        maxHeight: newHeight
+      }, "slow", function() {
+        para.css('max-height', 'none');
+      });
+    });
+      $('.read-more a.less').click(function(e) {
+      e.preventDefault();
+      var para = $(this).closest('p.more');
+      var initialHeight = $(this).closest('p.more').innerHeight();
+      var newHeight = para.innerHeight();
+      para.css('max-height', initialHeight + 'px');
+      para.animate({
+        maxHeight: originHeight
+      }, "slow", function() {
+            para.find('.read-more').hide();
+      para.find('.toggle').show();
+        para.css('max-height', 'none');
+      });
+    });
+  });
+
+ </script>
+
+
+
+
+<h1 class="fullSpan">Appendix B – History of Salon Judging</h1>
+
+<article class="appendixContainer appendixBcontainer">
+
+  <h2>1972</h2>
+  <p class="more">
+      Awards were given in five categories: continuous tone, medical line, medical color, finearts and Best of Show. Judging was by popular vote of Active members attending the annual meeting.
+  </p>
+
+  <h2>1979 Kansas City, Mo</h2>
+  <p class="more">
+      The Salon categories were expanded to include graphic design,projection media, 3D, exhibit design and medical books. This was the first year that the salonawards were selected by a panel of judges. Bill Westwood conceived the idea and DonBiggerstaff implemented the process. Karen Waldo, David Mascaro and Roger Postem, PhDdesigned the criteria by which the work would be judged. Six judges used a simple judging formand entries were judged as they were lined up on the floor around the room. A new set ofstudent categories was set up because it was felt that the student work should not have tocompete with the professional categories. Awards were given at the Awards Banquet.
+  </p>
+
+  <h2>1980 Savannah, GA</h2>
+  <p class="more">
+        The number of judges was increased to thirteen (six for professional,seven for student) to speed up the judging process. The 1979 judging forms were used and alljudges judged every entry.
+  </p>
+
+  <h2>1981 Toronto, Ontario</h2>
+  <p class="more">
+      The editorial category was added this year. The nine member judgingpanel included two doctors. It was felt that inclusion of an anatomist and a surgeon would helpeliminate medical errors. This worked fairly well, except that the two doctors did not alwaysagree on the "correct" anatomy. The 1979 judging forms were used and all judges judged everyentry before it was hung.
+  </p>
+
+  <h2>1982 Anaheim, CA</h2>
+  <p class="more">
+   The six member judging panel included two commercial illustrators and anart director from outside the profession. The group of six judged both the professional andstudent categories. The work was judged in elimination rounds. Round one: all entries wereviewed in 35mm slide format. Round two: judges sat in semi-circle and viewed the remainingoriginal entries one at a time as they were presented by a student. (The 1979 judging formswere used once again) Round three: final choices were made for first, second and honorablemention.This was the year that many first and second place ribbons were not awarded. The reasongiven is that the members of the judging panel from the commercial community felt thatdraftsmanship of entries in some categories did not meet some arbitrary imaginary standard.AMI member reaction was not positive, prompting the Board of Governors to require that futuresalon judges be Professional members of the AMI.
+  </p>
+
+  <h2>1983 Chicago, IL</h2>
+  <p class="more">
+      The cartooning category was added. The eight member panel was dividedinto a professional and student section. Judging proceeded exactly as in 1982, except that thejudges chose not to utilize the judging forms, claiming that they were too time consuming. Note:This was the year that the Salon Committee and judges could not get access to the Salon roomuntil the morning of the Salon opening. This only gave the judges nine hours to judge and hangthe Salon. (This process usually took 24 hours.) AMI purchased Gaterfoam panels this year.
+  </p>
+
+  <h2> 1984 Atlanta, GA</h2>
+  <p class="more">
+      Entry fees were instituted this year. The eleven member panel (sixprofessional category, five student category) decided not to judge the artwork in slide form, butrather to use the original art for all phases of judging. Each piece of artwork was judged by allpanelists using the judging form. The top four scores in each category were then reviewed forfinal placement ranking. The main drawback this year was that using the forms on every entrywas so time consuming that the judges worked almost around the clock to complete their jobsbefore the Salon opening.
+  </p>
+
+  <h2> 1985 Cincinnati, OH</h2>
+  <p class="more">
+      Two new categories were added this year, computer generated art andmedical/legal art. The thirteen member panel used the judging forms to score the artwork in thefirst several categories, then discarded the forms part way through the process as time becameshort. At this time, scores were given to the remaining pieces of artwork in a subjective manner.Once the scores were given, the numbers were tabulated and the winners chosen strictly by thehighest scores. Even the judges did not know who the winners were until the night of the Salonopening. Note: One other problem occurred this year. Three very outspoken members of thejudging panel tended to intimidate other judges by voicing strong opinions on minor anatomyand stylistic problems. Because the judging occurred in one large group, some members feltcompelled to go along with the group even though their own opinions differed on the work.
+  </p>
+
+  <h2>1986 Norfolk, VA</h2>
+  <p class="more"> 
+      This nine member panel (seven professional category, three studentcategory) used new, improved judging forms this year. The new forms were divided by category,set up to be read more easily and the point spreads were expanded to help eliminate close pointtotals between entries. An anatomist was included on this year's panel. He was very helpful inthe straight anatomy but eliminated many surgical anatomy pieces in which anatomy wasrepresented in a non-traditional manner.At the Interim Board Meeting after this year's Annual Meeting, the Board members directed theSalon Chair, for all future meetings, to try to have AMI members serve as judges only twicewithin a ten year period and not to serve for two years in a row. The rationale for this was thatthere are between 600 and 700 members in the Association and some members were beingasked to serve as judges year after year. The Board felt that "new blood" would help thefairness of the judging process.
+  </p>
+
+  <h2> 1987 Minneapolis, MN</h2>
+  <p class="more"> 
+    Many changes were instituted this year in response to membership andjudges complaints regarding the judging process. Under the new procedures, the time pressureon the judges was reduced by splitting the judges up into four mini-panels of three to fourjudges. Now, instead of all members of the larger judging panels judging every category ofartwork in the Salon (the old time-consuming process), the new mini-panels are onlyresponsible for judging three or four categories. Judges on the mini-panels are selected so thattheir expertise closely matches the categories which they are judging. This allows the judges totake more time evaluating each entry and helps insure that the judging process is consistentthroughout.
+  </p>
+
+  <h2> 1989 Dallas, TX</h2>
+  <p class="more"> 
+    The Salon was once again judged in mini-panels. The mini-panels weregrouped in an attempt to equalize the number of entries among the judges. The judges wereassigned to provide a range of experience in each mini-panel. The fee per entry was raised$5.00 and the total number of entries per member was limited to three.
+  </p>
+
+  <h2>  1991 New Orleans, LA</h2>
+  <p class="more"> 
+    The Salon Committee was split into two committees in this year: TheSalon Hanging Committee and the Salon Judging Committee. The Salon was once againjudged in mini-panels, grouped to equalize the number of entries among the judges. The judgeswere assigned to provide a range of experience in each mini-panel. The fee per entry was$35.00 and the total number of entries per member was limited to three.
+  </p>
+
+  <h2>  1992 Chicago, IL</h2>
+  <p class="more"> 
+    The Salon was once again judged in mini-panels, grouped to equalize thenumber of entries among the judges. The judges were assigned to provide a range ofexperience in each mini-panel. The fee per entry was $35.00 and the total number of entries perProfessional member was limited to three, per Associate member was limited to two and perstudent member was limited to one.
+  </p>
+
+  <h2> 2007 Bozeman, MT</h2>
+  <p class="more"> 
+    It was decided that the title “Award” of Merit should be used instead of“Certificate” of Merit to better reflect the quality of the works given this award and not minimizetheir value.
+  </p>
+
+  <h2>  2008 Indianapolis, IN</h2>
+  <p class="more"> 
+    The division of the existing Animation and Interactive Media categoriesinto smaller subcategories was implemented this year by the Professional Exhibits Committee.Blank judging forms were put on the AMI meeting website in order to assist entrants in thepreparation of their salon labels as well as make the judging process a bit more transparent tothe general membership.
+  </p>
+
+  <h2>  2009 Richmond, VA</h2>
+  <p class="more"> 
+    This year a “prejudging” process was implemented for the animation andinteractive categories in order to save some time on judging day as well as allow some peopleto still act as judges in spite of the fact that they could not be there in person. The judging chairwas given the files to disperse to his committee.
+  </p>
+
+  <h2> 2014 Rochester, MN</h2>
+  <p class="more"> 
+    This year, all categories were pre-judged. AMI Headquarters dispersedthe digital files to the judges via Dropbox.
+  </p>
+
+
+    
+</article>
+<%- include('partials/footer.ejs') %>

@@ -1,0 +1,42 @@
+<%- include('partials/header.ejs') %>
+
+<script>
+  $(document).ready(function(){
+    $("li.nav-item.dropdown.appendix").attr("style", "background-color:orange;");
+    $("span.nav-link.dropdown-toggle.appendix").attr("style", "color:#fff;");
+      });
+</script>
+
+<h1 class="fullSpan">Printable Ballots</h1>
+
+
+<main class=" justify-content-center m-4 singlePage align-items-center">
+  <section>
+    <h1>Download Ballots</h1>
+   
+      <h3> <a href="images/pdf/_PRINT_Award_Winners.pdf">Award Winners Ballot</a> </h3>
+      <h3> <a href="images/pdf/_PRINT_AwardBest_In_Show.pdf">Best In Show Ballot</a> </h3>
+    <hr>
+  </section>
+
+  <section>
+    <embed style="margin-right: 5%" Id="AwardWinnersBallot" src="images/pdf/_PRINT_Award_Winners.pdf"   width="90%"  height="700px" alt="PRINT Award Winners Ballot">
+      <hr>
+        <p>   </p>     
+       <embed Id="BestInsShowBallot" src="images/pdf/_PRINT_AwardBest_In_Show.pdf"    width="90%"  height="700px" alt="PRINT Award Winners Ballot">
+  </section>
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include('partials/footer.ejs') %>

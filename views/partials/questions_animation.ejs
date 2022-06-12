@@ -1,0 +1,534 @@
+<script>
+    //save radio selection
+
+    function radioSelect( event, entryId){  
+        const el =  event.target;
+
+
+     
+
+        if(el.checked) {
+            const entryId = window.location.pathname.substring(12);
+            const selectedRadio = el.value; 
+            const getQuestionNum = el.parentElement.parentElement.classList[0];
+            const user =  $("#user").text();
+            const category = $('h1.fullSpan span').text();
+            const changeColorLive = $('.ui-state-active').attr('style', 'background: #467946')
+
+
+            console.log({ entryId, getQuestionNum, selectedRadio, notes});
+
+            $.ajax('/score', {
+            type: 'POST', 
+            data: { getQuestionNum: getQuestionNum,
+                    selectedRadio: selectedRadio,
+                    entryId: entryId,
+                    category: category,
+
+                 },
+            dataType: 'json',
+            success: function (data, status, xhr) {
+                console.log(data);
+                console.log(user);
+                console.log(entryId);
+            },
+            error: function (jqXhr, textStatus, errorMessage) {
+                console.log(errorMessage);
+                }
+                });    
+        }
+
+      
+     }
+
+</script>
+
+<section id="scoring" name="">
+<h1 class="ratingFormHeader"> 
+    <span> Scoring   </span> 
+    <ul>
+        <li>Click on a question and the toggle will open with the radio button select options </li>
+        <li>When you click a radio button the selection will be recorded, the question will then turn green</li>
+        <li>In order to save notes, write your quesitons or thoughts for later and then once you click "Submit & mark complete"  your notes will be recorded. At this time the art entry be recorded as scored.</li>
+      </ul>
+    <hr>
+
+<script>
+    $( function() {
+      $( "#accordion1" ).accordion({
+          active:false,
+        collapsible: true,
+        heightStyle: "content"
+      });
+    });
+    $( function() {
+      $( "#accordion2" ).accordion({
+          active:false,
+        collapsible: true,
+        heightStyle: "content"
+      });
+    });
+</script>
+
+
+<p> Part I: Communication/Problem Solving: </p>
+
+<div id="accordion1" class="<%= artentries.category %>"  >
+     
+    <h3 class="" aria-expanded="false">1. Conveys the message</h3>
+       <div class="ratingFormSubHeader " > 
+           <form action="/show" method="POST" class="anim_part1_1_message">
+               <p>Generally, medical animation is produced to convey a specific message or idea.  How well does the animation tell the story identified in the statement of purpose?   Is the storytelling coherent, does it hold your attention; does the story have resonance, and stay with you after viewing the animation?</p>
+             
+               <label for="1-0">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%= anim_part1_1_message == 0 ? 'checked' : '' %> /> 
+                   0 Failure 
+               </label>
+               <label for="1-1">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="1"  <%= anim_part1_1_message == 1 ? 'checked' : '' %> /> 
+                   1 Minimal/Poor      
+               </label>
+               <label for="1-2">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%= anim_part1_1_message == 2 ? 'checked' : '' %> /> 
+                   2 Fair/low    
+               </label>
+               <label for="1-3">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="3"  <%= anim_part1_1_message == 3 ? 'checked' : '' %> /> 
+                   3 Average / Adequate
+               </label>
+               <label for="1-4">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="4"   <%= anim_part1_1_message == 4 ? 'checked' : '' %> />  
+                   4 Very Good / High   
+               </label>
+               <label for="1-5">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="5"   <%= anim_part1_1_message == 5 ? 'checked' : '' %> /> 
+                   5 Excellent / Very High   
+               </label>
+            </form>
+         </div>
+
+         <h3 class="" aria-expanded="false">2. Appropriate for the intended audience</h3>
+         <div class="ratingFormSubHeader " > 
+             <form action="/show" method="POST" class="anim_part1_2_audience">
+                 <p>The simplicity or complexity of the work should be appropriate for the knowledge of the audience.  For example, the medical and scientific content should match the background and knowledge of the intended viewer, and complexity should be built on a foundation of structured understanding.  Assumption of knowledge for the layman or the opposite, addition of simplistic information for an expert audience, would define an inadequate content architecture.</p>
+               
+                 <label for="1-0">
+                     <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%= anim_part1_2_audience == 0 ? 'checked' : '' %> /> 
+                     0 Failure 
+                 </label>
+                 <label for="1-1">
+                     <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="1"  <%= anim_part1_2_audience == 1 ? 'checked' : '' %> /> 
+                     1 Minimal/Poor      
+                 </label>
+                 <label for="1-2">
+                     <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%= anim_part1_2_audience == 2 ? 'checked' : '' %> /> 
+                     2 Fair/low    
+                 </label>
+                 <label for="1-3">
+                     <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="3"  <%= anim_part1_2_audience == 3 ? 'checked' : '' %> /> 
+                     3 Average / Adequate
+                 </label>
+                 <label for="1-4">
+                     <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="4"   <%= anim_part1_2_audience == 4 ? 'checked' : '' %> />  
+                     4 Very Good / High   
+                 </label>
+                 <label for="1-5">
+                     <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="5"   <%= anim_part1_2_audience == 5 ? 'checked' : '' %> /> 
+                     5 Excellent / Very High   
+                 </label>
+              </form>
+           </div>
+
+           <h3 class="" aria-expanded="false">3. Degree of problem solving</h3>
+           <div class="ratingFormSubHeader " > 
+               <form action="/show" method="POST" class="anim_part1_3_problemSolving">
+                   <p>Consider the degree of problem solving expressed in the animation and/or the uniqueness of the concept in the visual solution.  Take into account any challenges or obstacles presented by the conceptual and technical parameters of the job indicated in the statement of purpose.</p>
+                 
+                   <label for="1-0">
+                       <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%= anim_part1_3_problemSolving == 0 ? 'checked' : '' %> /> 
+                       0 Failure 
+                   </label>
+                   <label for="1-1">
+                       <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="1"  <%= anim_part1_3_problemSolving == 1 ? 'checked' : '' %> /> 
+                       1 Minimal/Poor      
+                   </label>
+                   <label for="1-2">
+                       <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%= anim_part1_3_problemSolving == 2 ? 'checked' : '' %> /> 
+                       2 Fair/low    
+                   </label>
+                   <label for="1-3">
+                       <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="3"  <%= anim_part1_3_problemSolving == 3 ? 'checked' : '' %> /> 
+                       3 Average / Adequate
+                   </label>
+                   <label for="1-4">
+                       <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="4"   <%= anim_part1_3_problemSolving == 4 ? 'checked' : '' %> />  
+                       4 Very Good / High   
+                   </label>
+                   <label for="1-5">
+                       <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="5"   <%= anim_part1_3_problemSolving == 5 ? 'checked' : '' %> /> 
+                       5 Excellent / Very High   
+                   </label>
+                </form>
+             </div>
+
+             <h3 class="" aria-expanded="false">4. Accuracy of medical or scientific information represented</h3>
+             <div class="ratingFormSubHeader " > 
+                 <form action="/show" method="POST" class="anim_part1_4_accuracy">
+                     <p>Evaluate the accuracy, consistency, and representation of anatomical relationships, molecular biology and interpretation of molecular data.  Pictorial manipulation of life science information or distortion of size relationships may sometimes be necessary but should be done clearly, with purpose and knowledge. Note: this criterion is double weighted. 
+                        </p>
+                   
+                     <label for="1-0">
+                         <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%= anim_part1_4_accuracy == 0 ? 'checked' : '' %> /> 
+                         0 Failure 
+                     </label>
+                     <label for="1-1">
+                         <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="2"  <%= anim_part1_4_accuracy == 2 ? 'checked' : '' %> /> 
+                         2 Minimal/Poor      
+                     </label>
+                     <label for="1-2">
+                         <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="4"  <%= anim_part1_4_accuracy == 4 ? 'checked' : '' %> /> 
+                         4 Fair/low    
+                     </label>
+                     <label for="1-3">
+                         <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="6"  <%= anim_part1_4_accuracy == 6 ? 'checked' : '' %> /> 
+                          Average / Adequate
+                     </label>
+                     <label for="1-4">
+                         <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="8"   <%= anim_part1_4_accuracy == 8 ? 'checked' : '' %> />  
+                         4 Very Good / High   
+                     </label>
+                     <label for="1-5">
+                         <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="10"   <%= anim_part1_4_accuracy == 10 ? 'checked' : '' %> /> 
+                         5 Excellent / Very High   
+                     </label>
+                  </form>
+               </div>
+    
+               <h3 class="" aria-expanded="false">5. Clarity</h3>
+               <div class="ratingFormSubHeader " > 
+                   <form action="/show" method="POST" class="anim_part1_5_clarity">
+                       <p>The pictorial information and visual design should be clear, direct, precise, and easily understood.  It should be without unnecessary motion or excessive, distracting peripheral information. Relationships amongst major and minor characters should be clear.  Information should be presented and revealed in a logical fashion and not be misleading or cause confusion.
+                          </p>
+                     
+                       <label for="1-0">
+                           <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%= anim_part1_5_clarity == 0 ? 'checked' : '' %> /> 
+                           0 Failure 
+                       </label>
+                       <label for="1-1">
+                           <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="1"  <%= anim_part1_5_clarity == 1 ? 'checked' : '' %> /> 
+                           1 Minimal/Poor      
+                       </label>
+                       <label for="1-2">
+                           <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%= anim_part1_5_clarity == 2 ? 'checked' : '' %> /> 
+                           2 Fair/low    
+                       </label>
+                       <label for="1-3">
+                           <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="3"  <%= anim_part1_5_clarity == 3 ? 'checked' : '' %> /> 
+                           3 Average / Adequate
+                       </label>
+                       <label for="1-4">
+                           <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="4"   <%= anim_part1_5_clarity == 4 ? 'checked' : '' %> />  
+                           4 Very Good / High   
+                       </label>
+                       <label for="1-5">
+                           <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="5"   <%= anim_part1_5_clarity == 5 ? 'checked' : '' %> /> 
+                           5 Excellent / Very High   
+                       </label>
+                    </form>
+                 </div>
+</div>
+
+   <p>Part II:  Production Values</p>
+   <div id="accordion2" class="<%= artentries.category %>"  >
+    
+    <h3 class="">6.	Effectiveness of technique and media</h3>
+       <div class="ratingFormSubHeader">
+           <form action="/show" method="POST" class="anim_part2_6_technique">
+               <p>In analyzing the use of 2D or 3D animation is the selection of technique appropriate for the intended presentation modality. Does the appearance and quality of the animation, including proper use of color, size of key characters, use of space, motion, and level of visual complexity, account for the overall, memorable viewing experience or are there technical issues preventing you from experiencing it to the fullest?  
+                </p>
+             
+               <label for="6-0">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-0" name="rating" value="0"  <%=  anim_part2_6_technique == 0 ? 'checked' : '' %> />
+                   0 Failure 
+               </label>
+               <label for="6-1">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-1" name="rating" value="1"  <%=  anim_part2_6_technique == 1 ? 'checked' : '' %> />
+                   1 Minimal/Poor      
+               </label>
+               <label for="6-2">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-2" name="rating" value="2"  <%=  anim_part2_6_technique == 2 ? 'checked' : '' %> />
+                   2 Fair/low    
+               </label>
+               <label for="6-3">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-3" name="rating" value="3"  <%=  anim_part2_6_technique == 3 ? 'checked' : '' %> />
+                   3 Average / Adequate
+               </label>
+               <label for="6-4">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-4" name="rating" value="4"  <%=  anim_part2_6_technique == 4 ? 'checked' : '' %> />
+                   4 Very Good / High   
+               </label>
+               <label for="6-5">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-5" name="rating" value="5"  <%=  anim_part2_6_technique == 5 ? 'checked' : '' %> />
+                   5 Excellent / Very High   
+               </label>
+            </form>
+        </div>
+           
+    <h3 class="">7.	Framing and scenic composition</h3>
+    <div class="ratingFormSubHeader">
+        <form action="/show" method="POST" class="anim_part2_7_composition">
+            <p>The use of design elements to focus attention: color and lighting scheme, tonality, balance, unity of elements; use of space; camera position, and design of characters in each scene.
+             </p>
+          
+            <label for="6-0">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-0" name="rating" value="0"  <%=  anim_part2_7_composition == 0 ? 'checked' : '' %> />
+                0 Failure 
+            </label>
+            <label for="6-1">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-1" name="rating" value="1"  <%=  anim_part2_7_composition == 1 ? 'checked' : '' %> />
+                1 Minimal/Poor      
+            </label>
+            <label for="6-2">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-2" name="rating" value="2"  <%=  anim_part2_7_composition == 2 ? 'checked' : '' %> />
+                2 Fair/low    
+            </label>
+            <label for="6-3">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-3" name="rating" value="3"  <%=  anim_part2_7_composition == 3 ? 'checked' : '' %> />
+                3 Average / Adequate
+            </label>
+            <label for="6-4">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-4" name="rating" value="4"  <%=  anim_part2_7_composition == 4 ? 'checked' : '' %> />
+                4 Very Good / High   
+            </label>
+            <label for="6-5">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-5" name="rating" value="5"  <%=  anim_part2_7_composition == 5 ? 'checked' : '' %> />
+                5 Excellent / Very High   
+            </label>
+         </form>
+     </div>
+            
+    <h3 class="">8.	Draftsmanship</h3>
+    <div class="ratingFormSubHeader">
+        <form action="/show" method="POST" class="anim_part2_8_draftsmanship">
+            <p>In creating the illusion of depth, space and form, traditional or 2D animations should exhibit dimensional quality, perspective, proportions, effective use of light, and skill in rendering. Evaluate 3D animations with the same criteria and also consider the quality of model construction and their texture.
+             </p>
+          
+            <label for="6-0">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-0" name="rating" value="0"  <%=  anim_part2_8_draftsmanship == 0 ? 'checked' : '' %> />
+                0 Failure 
+            </label>
+            <label for="6-1">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-1" name="rating" value="1"  <%=  anim_part2_8_draftsmanship == 1 ? 'checked' : '' %> />
+                1 Minimal/Poor      
+            </label>
+            <label for="6-2">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-2" name="rating" value="2"  <%=  anim_part2_8_draftsmanship == 2 ? 'checked' : '' %> />
+                2 Fair/low    
+            </label>
+            <label for="6-3">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-3" name="rating" value="3"  <%=  anim_part2_8_draftsmanship == 3 ? 'checked' : '' %> />
+                3 Average / Adequate
+            </label>
+            <label for="6-4">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-4" name="rating" value="4"  <%=  anim_part2_8_draftsmanship == 4 ? 'checked' : '' %> />
+                4 Very Good / High   
+            </label>
+            <label for="6-5">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-5" name="rating" value="5"  <%=  anim_part2_8_draftsmanship == 5 ? 'checked' : '' %> />
+                5 Excellent / Very High   
+            </label>
+         </form>
+     </div>
+         
+    <h3 class="">9.	Craftsmanship</h3>
+    <div class="ratingFormSubHeader">
+        <form action="/show" method="POST" class="anim_part2_9_craftsmanship">
+            <p>The overall level of skill demonstrated in the application and handling of the technique and media Consider the editing, compositing, and continuity. In animations where mood and drama are part of the experience, consider the effective use of color and lighting. Any voice-over narration should be professional, spoken with clarity and scientific accuracy.  Is the sound design complementary or distracting? 
+             </p>
+          
+            <label for="6-0">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-0" name="rating" value="0"  <%=  anim_part2_9_craftsmanship == 0 ? 'checked' : '' %> />
+                0 Failure 
+            </label>
+            <label for="6-1">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-1" name="rating" value="1"  <%=  anim_part2_9_craftsmanship == 1 ? 'checked' : '' %> />
+                1 Minimal/Poor      
+            </label>
+            <label for="6-2">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-2" name="rating" value="2"  <%=  anim_part2_9_craftsmanship == 2 ? 'checked' : '' %> />
+                2 Fair/low    
+            </label>
+            <label for="6-3">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-3" name="rating" value="3"  <%=  anim_part2_9_craftsmanship == 3 ? 'checked' : '' %> />
+                3 Average / Adequate
+            </label>
+            <label for="6-4">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-4" name="rating" value="4"  <%=  anim_part2_9_craftsmanship == 4 ? 'checked' : '' %> />
+                4 Very Good / High   
+            </label>
+            <label for="6-5">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-5" name="rating" value="5"  <%=  anim_part2_9_craftsmanship == 5 ? 'checked' : '' %> />
+                5 Excellent / Very High   
+            </label>
+         </form>
+     </div>
+         
+    <h3 class="">10. Motion and effects</h3>
+    <div class="ratingFormSubHeader">
+        <form action="/show" method="POST" class="anim_part2_10_motion_fx">
+            <p>The overall skill demonstrated in planning and executing the movements of the camera and characters. Do camera and character movements help convey the message and focus attention? Are the “in camera” effects, i.e. cuts, dissolves, focus, fades, and supers smooth and error free? Does the motion design and use of special effects support the content and reinforce the storytelling?  
+             </p>
+          
+            <label for="6-0">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-0" name="rating" value="0"  <%=  anim_part2_10_motion_fx == 0 ? 'checked' : '' %> />
+                0 Failure 
+            </label>
+            <label for="6-1">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-1" name="rating" value="1"  <%=  anim_part2_10_motion_fx == 1 ? 'checked' : '' %> />
+                1 Minimal/Poor      
+            </label>
+            <label for="6-2">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-2" name="rating" value="2"  <%=  anim_part2_10_motion_fx == 2 ? 'checked' : '' %> />
+                2 Fair/low    
+            </label>
+            <label for="6-3">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-3" name="rating" value="3"  <%=  anim_part2_10_motion_fx == 3 ? 'checked' : '' %> />
+                3 Average / Adequate
+            </label>
+            <label for="6-4">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-4" name="rating" value="4"  <%=  anim_part2_10_motion_fx == 4 ? 'checked' : '' %> />
+                4 Very Good / High   
+            </label>
+            <label for="6-5">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-5" name="rating" value="5"  <%=  anim_part2_10_motion_fx == 5 ? 'checked' : '' %> />
+                5 Excellent / Very High   
+            </label>
+         </form>
+     </div>
+           
+    <h3 class="">11. Sound/picture relationship</h3>
+    <div class="ratingFormSubHeader">
+        <form action="/show" method="POST" class="anim_part2_11_sound">
+            <p>Is the final animated visual sequence appropriate to the accompanying narrative with respect to pace, content, synchronization, etc?   
+             </p>
+          
+            <label for="6-0">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-0" name="rating" value="0"  <%=  anim_part2_11_sound == 0 ? 'checked' : '' %> />
+                0 Failure 
+            </label>
+            <label for="6-1">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-1" name="rating" value="1"  <%=  anim_part2_11_sound == 1 ? 'checked' : '' %> />
+                1 Minimal/Poor      
+            </label>
+            <label for="6-2">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-2" name="rating" value="2"  <%=  anim_part2_11_sound == 2 ? 'checked' : '' %> />
+                2 Fair/low    
+            </label>
+            <label for="6-3">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-3" name="rating" value="3"  <%=  anim_part2_11_sound == 3 ? 'checked' : '' %> />
+                3 Average / Adequate
+            </label>
+            <label for="6-4">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-4" name="rating" value="4"  <%=  anim_part2_11_sound == 4 ? 'checked' : '' %> />
+                4 Very Good / High   
+            </label>
+            <label for="6-5">
+                <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-5" name="rating" value="5"  <%=  anim_part2_11_sound == 5 ? 'checked' : '' %> />
+                5 Excellent / Very High   
+            </label>
+         </form>
+     </div>
+ </div>
+
+     
+<p> Notes and Submit </p>
+
+<form action="/show" method="POST" class="notesSubmit">
+<p> <%= artentries.score_general %> </p>
+    <label for="notes">
+        <textarea type="text" id="notes" name="notes" rows="15" cols="50" placeholder="Thoughts?"><%= complete === true? notes : '' %></textarea>
+    </label>
+
+
+    <% if(complete === true){ %>
+        <button id="buttonComplete" type="button" class="scoreSubmitBtn btn btn-success btn-block btn-lg" onclick="notesAndComplete().prevent" true> Marked as Complete</button>
+
+     <% } else{ %>
+            <button id="buttonComplete" type="button" class="scoreSubmitBtn btn btn-warning btn-block btn-lg" onclick="notesAndComplete()"  > Submit & mark complete</button>            
+      <%  } %>
+      <button id="buttonCompleteChecked" type="button" class="scoreSubmitBtn btn btn-success btn-block btn-lg" onclick="notesAndComplete()" style="display:none" > Marked as Complete</button>
+
+ </form>
+
+</h1>
+</section>
+
+
+
+
+<script>
+    function notesAndComplete(){  
+
+
+
+       const entryId = window.location.pathname.substring(12);
+       const category = $('h1.fullSpan span').text();
+       const complete =   document.querySelector('button#buttonComplete').toggleAttribute('true')
+       const notes = $("#notes").val();
+       const changeColorLive = $('.ui-state-active').attr('style', 'background: #467946');
+       document.querySelector('button#buttonComplete').toggleAttribute('true')
+
+
+              $.ajax('/score', {
+              type: 'POST', 
+              data: {entryId: entryId,
+                    category: category,
+                    complete: complete ? true: false,
+                    notes: notes ? notes : "" ,
+                   },
+              dataType: 'json',
+              success: function (data, status, xhr) {
+
+              },
+              error: function (jqXhr, textStatus, err) {
+                  console.log("ajax  notes and submit: " + err.message + "id:" + entryId);
+                  }
+              });
+        
+              $( document ).ajaxComplete(function() {
+       
+                $('button#buttonComplete').prop('style', "display:none");
+                $('button#buttonCompleteChecked').prop('style', "display:inline-block");
+  
+             });
+          }
+</script>
+
+
+
+<script>
+    
+function checkQuestionScored(){
+
+const part1 =  window.document.querySelectorAll('#accordion1 input' );
+const part2 =  window.document.querySelectorAll('#accordion2 input' );
+
+for(let i = 0; i < part1.length -1 ; i++ ){
+
+if(part1[i].defaultChecked === true){
+  part1[i].parentNode.parentNode.parentNode.previousSibling.previousSibling.setAttribute("class","green");
+}
+}
+
+for(let i = 0; i < part2.length -1 ; i++ ){
+
+if(part2[i].defaultChecked === true){
+  part2[i].parentNode.parentNode.parentNode.previousSibling.previousSibling.setAttribute("class","green");
+}
+}
+} 
+
+window.document.onload = checkQuestionScored();
+
+
+</script>

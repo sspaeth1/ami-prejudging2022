@@ -1,0 +1,559 @@
+<script>
+    //save radio selection
+
+    function radioSelect( event, entryId){  
+        const el =  event.target;
+        //console.log({  el })
+
+     
+
+        if(el.checked) {
+            const entryId = window.location.pathname.substring(12);
+            const selectedRadio = el.value; //el.id
+            const getQuestionNum = el.parentElement.parentElement.classList[0];
+            const user =  $("#user").text();
+            const category = $('h1.fullSpan span').text();
+            const changeColorLive = $('.ui-state-active').attr('style', 'background: #467946')
+
+
+            console.log({ entryId, getQuestionNum, selectedRadio, notes});
+
+            $.ajax('/score', {
+            type: 'POST', 
+            data: { getQuestionNum: getQuestionNum,
+                    selectedRadio: selectedRadio,
+                    entryId: entryId,
+                    category: category,
+
+                 },
+            dataType: 'json',
+            success: function (data, status, xhr) {
+                console.log(data);
+                console.log(user);
+                console.log(entryId);
+            },
+            error: function (jqXhr, textStatus, errorMessage) {
+                console.log(errorMessage);
+                }
+                });    
+        }
+
+      
+     }
+
+</script>
+
+<section id="scoring" name="">
+<h1 class="ratingFormHeader"> 
+    <span> Scoring   </span> 
+    <ul>
+        <li>Click on a question and the toggle will open with the radio button select options </li>
+        <li>When you click a radio button the selection will be recorded, the question will then turn green</li>
+        <li>In order to save notes, write your quesitons or thoughts for later and then once you click "Submit & mark complete"  your notes will be recorded. At this time the art entry be recorded as scored.</li>
+      </ul>
+    <hr>
+
+<script>
+    $( function() {
+      $( "#accordion1" ).accordion({
+          active:false,
+        collapsible: true,
+        heightStyle: "content"
+      });
+    });
+    $( function() {
+      $( "#accordion2" ).accordion({
+          active:false,
+        collapsible: true,
+        heightStyle: "content"
+      });
+    });
+</script>
+
+
+<p> Part I: Communication/Problem Solving: </p>
+
+<div id="accordion1" class="<%= artentries.category %>"  >
+     
+    <h3 class="" aria-expanded="false">1. Conveys the message</h3>
+       <div class="ratingFormSubHeader " > 
+           <form action="/show" method="POST" class="intractv_part1_1_message">
+               <p>How well does the interactive media object instruct or tell the story
+                identified in the statement of purpose? </p>
+             
+               <label for="1-0">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%= intractv_part1_1_message == 0 ? 'checked' : '' %> /> 
+                   0 Failure 
+               </label>
+               <label for="1-1">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="1"  <%= intractv_part1_1_message == 1 ? 'checked' : '' %> /> 
+                   1 Minimal/Poor      
+               </label>
+               <label for="1-2">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%= intractv_part1_1_message == 2 ? 'checked' : '' %> /> 
+                   2 Fair/low    
+               </label>
+               <label for="1-3">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="3"  <%= intractv_part1_1_message == 3 ? 'checked' : '' %> /> 
+                   3 Average / Adequate
+               </label>
+               <label for="1-4">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="4"   <%= intractv_part1_1_message == 4 ? 'checked' : '' %> />  
+                   4 Very Good / High   
+               </label>
+               <label for="1-5">
+                   <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="5"   <%= intractv_part1_1_message == 5 ? 'checked' : '' %> /> 
+                   5 Excellent / Very High   
+               </label>
+            </form>
+         </div>
+  <h3 class="" aria-expanded="false">2. Appropriate for the intended audience</h3>
+         <div class="ratingFormSubHeader " > 
+             <form action="/show" method="POST" class="intractv_part1_2_audience">
+                 <p> The simplicity or complexity of the work
+                    should be appropriate for the knowledge of the audience. For example, simplistic or irrelevant labeling
+                    should not be used for specialists in their area of expertise. Does the interactivity and/or design support
+                    unique, ease-of-use considerations for those with special needs or visual impairment due to an age-related
+                    or disease-specific audience?</p>
+               
+                 <label for="1-0">
+                     <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%= intractv_part1_2_audience == 0 ? 'checked' : '' %> /> 
+                     0 Failure 
+                 </label>
+                 <label for="1-1">
+                     <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="1"  <%= intractv_part1_2_audience == 1 ? 'checked' : '' %> /> 
+                     1 Minimal/Poor      
+                 </label>
+                 <label for="1-2">
+                     <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%= intractv_part1_2_audience == 2 ? 'checked' : '' %> /> 
+                     2 Fair/low    
+                 </label>
+                 <label for="1-3">
+                     <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="3"  <%= intractv_part1_2_audience == 3 ? 'checked' : '' %> /> 
+                     3 Average / Adequate
+                 </label>
+                 <label for="1-4">
+                     <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="4"   <%= intractv_part1_2_audience == 4 ? 'checked' : '' %> />  
+                     4 Very Good / High   
+                 </label>
+                 <label for="1-5">
+                     <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="5"   <%= intractv_part1_2_audience == 5 ? 'checked' : '' %> /> 
+                     5 Excellent / Very High   
+                 </label>
+              </form>
+           </div>
+
+        <h3 class="" aria-expanded="false">3. Degree of problem solving</h3>
+        <div class="ratingFormSubHeader " > 
+            <form action="/show" method="POST" class="intractv_part1_3_problemSolving">
+                <p> Consider the degree of problem solving expressed in the media
+                    object. Take into account obstacles created by the conceptual and technical parameters of the job as
+                    described on the statement of purpose.</p>
+              
+                <label for="1-0">
+                    <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%=  intractv_part1_3_problemSolving == 0 ? 'checked' : '' %> /> 
+                    0 Failure 
+                </label>
+                <label for="1-1">
+                    <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="1"  <%=  intractv_part1_3_problemSolving == 1 ? 'checked' : '' %> /> 
+                    1 Minimal/Poor      
+                </label>
+                <label for="1-2">
+                    <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%=  intractv_part1_3_problemSolving == 2 ? 'checked' : '' %> /> 
+                    2 Fair/low    
+                </label>
+                <label for="1-3">
+                    <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="3"  <%=  intractv_part1_3_problemSolving == 3 ? 'checked' : '' %> /> 
+                    3 Average / Adequate
+                </label>
+                <label for="1-4">
+                    <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="4"   <%=  intractv_part1_3_problemSolving == 4 ? 'checked' : '' %> />  
+                    4 Very Good / High   
+                </label>
+                <label for="1-5">
+                    <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="5"   <%=  intractv_part1_3_problemSolving == 5 ? 'checked' : '' %> /> 
+                    5 Excellent / Very High   
+                </label>
+             </form>
+          </div>
+            <h3 class="" aria-expanded="false">4. Appropriate use of interactivity</h3>
+            <div class="ratingFormSubHeader " > 
+                <form action="/show" method="POST" class="intractv_part1_4_intractvUse">
+                    <p>  Is interactivity used effectively to achieve
+                      communication goals or is it used gratuitously? Has the interaction design solution helped to effectively
+                      solve the communication problem? Is the user a participant and not a spectator?</p>
+  
+                    <label for="1-0">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%= intractv_part1_4_intractvUse == 0 ? 'checked' : '' %> /> 
+                        0 Failure 
+                    </label>
+                    <label for="1-1">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="1"  <%= intractv_part1_4_intractvUse == 1 ? 'checked' : '' %> /> 
+                        1 Minimal/Poor      
+                    </label>
+                    <label for="1-2">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%= intractv_part1_4_intractvUse == 2 ? 'checked' : '' %> /> 
+                        2 Fair/low    
+                    </label>
+                    <label for="1-3">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="3"  <%= intractv_part1_4_intractvUse == 3 ? 'checked' : '' %> /> 
+                        3 Average / Adequate
+                    </label>
+                    <label for="1-4">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="4"   <%= intractv_part1_4_intractvUse == 4 ? 'checked' : '' %> />  
+                        4 Very Good / High   
+                    </label>
+                    <label for="1-5">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="5"   <%= intractv_part1_4_intractvUse == 5 ? 'checked' : '' %> /> 
+                        5 Excellent / Very High   
+                    </label>
+                 </form>
+              </div>
+              <h3 class="" aria-expanded="false">5. Accuracy of medical or scientific information represented</h3>
+              <div class="ratingFormSubHeader " > 
+                  <form action="/show" method="POST" class="intractv_part1_5_accuracy">
+                      <p> The information must be accurate, depicting currently accepted standards of biological and anatomical
+                        relationships and proportions. Pictorial manipulation of life science information or distortion of size
+                        relationships may sometimes be necessary as a communication tool but should be done clearly, with
+                        purpose and knowledge and should not be misleading or misinformative. Note: This criterion is double
+                        weighted</p>
+
+                        <label for="1-0">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%= intractv_part1_5_accuracy == 0 ? 'checked' : '' %> /> 
+                            0 Failure 
+                        </label>
+                        <label for="1-2">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%= intractv_part1_5_accuracy == 2 ? 'checked' : '' %> /> 
+                            2 Minimal/Poor      
+                        </label>
+                        <label for="1-4">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="4"  <%= intractv_part1_5_accuracy == 4 ? 'checked' : '' %> /> 
+                            4 Fair/low    
+                        </label>
+                        <label for="1-6">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-6" name="rating" value="6"  <%= intractv_part1_5_accuracy == 6 ? 'checked' : '' %> /> 
+                            6 Average / Adequate
+                        </label>
+                        <label for="1-8">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-8" name="rating" value="8"   <%= intractv_part1_5_accuracy == 8 ? 'checked' : '' %> />  
+                            8 Very Good / High   
+                        </label>
+                        <label for="1-10">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-10" name="rating" value="10"   <%= intractv_part1_5_accuracy == 10 ? 'checked' : '' %> /> 
+                            10 Excellent / Very High   
+                        </label>
+                   </form>
+                </div>
+                <h3 class="" aria-expanded="false">6. Clarity</h3>
+                <div class="ratingFormSubHeader " > 
+                    <form action="/show" method="POST" class="intractv_part1_6_clarity">
+                        <p> The pictorial information should be direct, precise, and easily read. It should be
+                            unencumbered with excessive, confusing, distracting peripheral information. When the artwork is
+                            presented as part of a series, information flow and consistency are taken into consideration. If work
+                            includes video or narration, pace and content should be considered.</p>
+                      
+                        <label for="1-0">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%= intractv_part1_6_clarity == 0 ? 'checked' : '' %> /> 
+                            0 Failure 
+                        </label>
+                        <label for="1-1">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="1"  <%= intractv_part1_6_clarity == 1 ? 'checked' : '' %> /> 
+                            1 Minimal/Poor      
+                        </label>
+                        <label for="1-2">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%= intractv_part1_6_clarity == 2 ? 'checked' : '' %> /> 
+                            2 Fair/low    
+                        </label>
+                        <label for="1-3">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="3"  <%= intractv_part1_6_clarity == 3 ? 'checked' : '' %> /> 
+                            3 Average / Adequate
+                        </label>
+                        <label for="1-4">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="4"   <%= intractv_part1_6_clarity == 4 ? 'checked' : '' %> />  
+                            4 Very Good / High   
+                        </label>
+                        <label for="1-5">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="5"   <%= intractv_part1_6_clarity == 5 ? 'checked' : '' %> /> 
+                            5 Excellent / Very High   
+                        </label>
+                     </form>
+                  </div>
+                  
+         </div>
+
+      
+   <p>Part II:  Production Values</p>
+   <div id="accordion2" class="<%= artentries.category %>"  >
+    
+    <h3 class="" aria-expanded="false">7. Effectiveness of technique and media for the intended presentation format</h3>
+            <div class="ratingFormSubHeader " > 
+                <form action="/show" method="POST" class="intractv_part2_7_technique">
+                    <p> All production standards for the presentation environment should be met, including: device
+                        dependent aspect ratio, use of color, value, line, and type within the format or viewing conditions;
+                        appropriate level of graphic complexity. If sound and video/animation are used, does the work effectively
+                        integrate these to enhance the message or story?</p>
+                
+                    <label for="1-0">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%= intractv_part2_7_technique == 0 ? 'checked' : '' %> /> 
+                        0 Failure 
+                    </label>
+                    <label for="1-1">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="1"  <%= intractv_part2_7_technique == 1 ? 'checked' : '' %> /> 
+                        1 Minimal/Poor      
+                    </label>
+                    <label for="1-2">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%= intractv_part2_7_technique == 2 ? 'checked' : '' %> /> 
+                        2 Fair/low    
+                    </label>
+                    <label for="1-3">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="3"  <%= intractv_part2_7_technique == 3 ? 'checked' : '' %> /> 
+                        3 Average / Adequate
+                    </label>
+                    <label for="1-4">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="4"   <%= intractv_part2_7_technique == 4 ? 'checked' : '' %> />  
+                        4 Very Good / High   
+                    </label>
+                    <label for="1-5">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="5"   <%= intractv_part2_7_technique == 5 ? 'checked' : '' %> /> 
+                        5 Excellent / Very High   
+                    </label>
+                </form>
+            </div>
+
+       
+                <h3 class="" aria-expanded="false">8. User interface design</h3>
+                <div class="ratingFormSubHeader " > 
+                    <form action="/show" method="POST" class="intractv_part2_8_UI">
+                        <p>  Does the interface guide the user and focus attention effectively?
+                            Consider the following: placement and unity of visual elements; contrast; dynamics of form and shape;
+                            balance; and effective use of space. Is the overall appearance of the program visually compelling and well
+                            designed?</p>
+                    
+                        <label for="1-0">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%= intractv_part2_8_UI == 0 ? 'checked' : '' %> /> 
+                            0 Failure 
+                        </label>
+                        <label for="1-1">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="1"  <%= intractv_part2_8_UI == 1 ? 'checked' : '' %> /> 
+                            1 Minimal/Poor      
+                        </label>
+                        <label for="1-2">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%= intractv_part2_8_UI == 2 ? 'checked' : '' %> /> 
+                            2 Fair/low    
+                        </label>
+                        <label for="1-3">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="3"  <%= intractv_part2_8_UI == 3 ? 'checked' : '' %> /> 
+                            3 Average / Adequate
+                        </label>
+                        <label for="1-4">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="4"   <%= intractv_part2_8_UI == 4 ? 'checked' : '' %> />  
+                            4 Very Good / High   
+                        </label>
+                        <label for="1-5">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="5"   <%= intractv_part2_8_UI == 5 ? 'checked' : '' %> /> 
+                            5 Excellent / Very High   
+                        </label>
+                    </form>
+                </div>   
+            
+                <h3 class="" aria-expanded="false">9. Draftsmanship, craftsmanship and design of pictorial elements</h3>
+                <div class="ratingFormSubHeader " > 
+                    <form action="/show" method="POST" class="intractv_part2_9_draftsman_craftsmanship">
+                        <p> Representational images should exhibit dimensional quality, perspective, proportions, effective use of
+                            light, and skill in rendering. Graphic and diagramitic images should be skillfully rendered exhibiting
+                            skillful use of color, tone, and line.</p>
+                    
+                        <label for="1-0">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%=  intractv_part2_9_draftsman_craftsmanship == 0 ? 'checked' : '' %> /> 
+                            0 Failure 
+                        </label>
+                        <label for="1-1">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="1"  <%=  intractv_part2_9_draftsman_craftsmanship == 1 ? 'checked' : '' %> /> 
+                            1 Minimal/Poor      
+                        </label>
+                        <label for="1-2">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%=  intractv_part2_9_draftsman_craftsmanship == 2 ? 'checked' : '' %> /> 
+                            2 Fair/low    
+                        </label>
+                        <label for="1-3">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="3"  <%=  intractv_part2_9_draftsman_craftsmanship == 3 ? 'checked' : '' %> /> 
+                            3 Average / Adequate
+                        </label>
+                        <label for="1-4">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="4"   <%=  intractv_part2_9_draftsman_craftsmanship == 4 ? 'checked' : '' %> />  
+                            4 Very Good / High   
+                        </label>
+                        <label for="1-5">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="5"   <%=  intractv_part2_9_draftsman_craftsmanship == 5 ? 'checked' : '' %> /> 
+                            5 Excellent / Very High   
+                        </label>
+                    </form>
+                </div>   
+       
+                <h3 class="" aria-expanded="false">10. Usability</h3>
+                <div class="ratingFormSubHeader " > 
+                    <form action="/show" method="POST" class="intractv_part2_10_usability">
+                        <p>The effectiveness of the design in assisting the user to accomplish stated objectives, such
+                            as completing intended tasks or finding key information. Users should be given cues and provided with
+                            help when the media object’s complexity warrants it.</p>
+                    
+                        <label for="1-0">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%=  intractv_part2_10_usability == 0 ? 'checked' : '' %> /> 
+                            0 Failure 
+                        </label>
+                        <label for="1-1">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="1"  <%=  intractv_part2_10_usability == 1 ? 'checked' : '' %> /> 
+                            1 Minimal/Poor      
+                        </label>
+                        <label for="1-2">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%=  intractv_part2_10_usability == 2 ? 'checked' : '' %> /> 
+                            2 Fair/low    
+                        </label>
+                        <label for="1-3">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="3"  <%=  intractv_part2_10_usability == 3 ? 'checked' : '' %> /> 
+                            3 Average / Adequate
+                        </label>
+                        <label for="1-4">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="4"   <%=  intractv_part2_10_usability == 4 ? 'checked' : '' %> />  
+                            4 Very Good / High   
+                        </label>
+                        <label for="1-5">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="5"   <%=  intractv_part2_10_usability == 5 ? 'checked' : '' %> /> 
+                            5 Excellent / Very High   
+                        </label>
+                    </form>
+                </div>   
+       
+        
+                <h3 class="" aria-expanded="false">11. Functionality</h3>
+                <div class="ratingFormSubHeader " > 
+                    <form action="/show" method="POST" class=" intractv_part2_11_functionality">
+                        <p>The application should work without errors or unexpected failures. Does the
+                            application work flawlessly with elements loading quickly or seamlessly? For instance, does every
+                            button work when clicked? Good functionality makes the experience and learning primary and allows the
+                            technology to become invisible.</p>
+                    
+                        <label for="1-0">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%=   intractv_part2_11_functionality == 0 ? 'checked' : '' %> /> 
+                            0 Failure 
+                        </label>
+                        <label for="1-1">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="1"  <%=   intractv_part2_11_functionality == 1 ? 'checked' : '' %> /> 
+                            1 Minimal/Poor      
+                        </label>
+                        <label for="1-2">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%=   intractv_part2_11_functionality == 2 ? 'checked' : '' %> /> 
+                            2 Fair/low    
+                        </label>
+                        <label for="1-3">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="3"  <%=   intractv_part2_11_functionality == 3 ? 'checked' : '' %> /> 
+                            3 Average / Adequate
+                        </label>
+                        <label for="1-4">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="4"   <%=   intractv_part2_11_functionality == 4 ? 'checked' : '' %> />  
+                            4 Very Good / High   
+                        </label>
+                        <label for="1-5">
+                            <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="5"   <%=   intractv_part2_11_functionality == 5 ? 'checked' : '' %> /> 
+                            5 Excellent / Very High   
+                        </label>
+                    </form>
+                </div>             
+ </div>
+
+     
+<p> Notes and Submit </p>
+
+<form action="/show" method="POST" class="notesSubmit">
+<p> <%= artentries.score_general %> </p>
+    <label for="notes">
+        <textarea type="text" id="notes" name="notes" rows="15" cols="50" placeholder="Thoughts?"><%= complete === true? notes : notes %></textarea>
+    </label>
+
+
+    <% if(complete === true){ %>
+        <button id="buttonComplete" type="button" class="scoreSubmitBtn btn btn-success btn-block btn-lg" onclick="notesAndComplete()" true> Marked as Complete</button>
+
+     <% } else{ %>
+            <button id="buttonComplete" type="button" class="scoreSubmitBtn btn btn-warning btn-block btn-lg" onclick="notesAndComplete()"  > Submit & mark complete</button>            
+      <%  } %>
+      <button id="buttonCompleteChecked" type="button" class="scoreSubmitBtn btn btn-success btn-block btn-lg" onclick="notesAndComplete()" style="display:none" > Marked as Complete</button>
+
+ </form>
+
+</h1>
+</section>
+
+
+
+
+<script>
+    function notesAndComplete(){  
+       const entryId = window.location.pathname.substring(12);
+       const category = $('h1.fullSpan span').text();
+       const complete =   document.querySelector('button#buttonComplete').toggleAttribute('true')
+       const notes = $("#notes").val();
+       const changeColorLive = $('.ui-state-active').attr('style', 'background: #467946');
+       document.querySelector('button#buttonComplete').toggleAttribute('true')
+
+       //to to toggle button completed <-> complete
+        // $('button#buttonComplete')[0].remove("class",true);
+
+              $.ajax('/score', {
+              type: 'POST', 
+              data: {entryId: entryId,
+                    category: category,
+                    complete: complete ? true: false,
+                    notes: notes ? notes : "" ,
+                   },
+              dataType: 'json',
+              success: function (data, status, xhr) {
+                //   console.log("data: " + JSON.stringify(data));
+                //   console.log(data);
+                //     console.log(user);
+              },
+              error: function (jqXhr, textStatus, err) {
+                  console.log("ajax  notes and submit: " + err.message + "id:" + entryId);
+                  }
+              });
+        
+              $( document ).ajaxComplete(function() {
+                //  document.querySelectorAll('input[name="rating"]').forEach( e =>e.disabled = true);
+                //  document.querySelectorAll('input[type="radio"]:checked').classList.add();
+                     
+                $('button#buttonComplete').prop('style', "display:none");
+                $('button#buttonCompleteChecked').prop('style', "display:inline-block");
+                //  console.log(document.querySelector('button#buttonComplete').toggleAttribute('true'))
+                 
+             });
+          }
+</script>
+
+
+
+<script>
+    
+function checkQuestionScored(){
+
+const part1 =  window.document.querySelectorAll('#accordion1 input' );
+const part2 =  window.document.querySelectorAll('#accordion2 input' );
+
+for(let i = 0; i < part1.length -1 ; i++ ){
+
+if(part1[i].defaultChecked === true){
+  part1[i].parentNode.parentNode.parentNode.previousSibling.previousSibling.setAttribute("class","green");
+}
+}
+
+for(let i = 0; i < part2.length -1 ; i++ ){
+
+if(part2[i].defaultChecked === true){
+  part2[i].parentNode.parentNode.parentNode.previousSibling.previousSibling.setAttribute("class","green");
+}
+}
+} 
+
+window.document.onload = checkQuestionScored();
+
+
+</script>

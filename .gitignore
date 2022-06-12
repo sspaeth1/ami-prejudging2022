@@ -1,0 +1,20 @@
+/node_modules
+.env
+**/archive
+**/dropbox-sdk-js
+/public/DBtest.js
+/images
+/data
+.rest
+/DELETE
+
+
+/public/data
+
+pagination
+scored button on artentries page 
+backend for awardspage persistnace
+video file check 
+image connection from dropbox
+image connection from AMR
+bug on last question score after marked complete the green styling seems to diappear

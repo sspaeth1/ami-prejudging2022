@@ -1,0 +1,46 @@
+{
+  "name": "salonjudging",
+  "version": "1.0.0",
+  "description": "Association of Medical Illustrators Salon prejudging application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "compilesass": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 public/css/app.scss public/css/app.css",
+    "css-minify": "cleancss --level 1 --format breaksWith=lf --source-map --source-map-inline-sources --output dist/styles.min.css dist/styles.css",
+    "process-styles": "npm run compilesass && npm run css-minify"
+  },
+  "author": "Shlomo Spaeth",
+  "license": "ISC",
+  "dependencies": {
+    "@popperjs/core": "^2.4.2",
+    "async": "^3.2.0",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.4.1",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^8.2.0",
+    "dropbox": "^4.0.30",
+    "ejs": "^3.0.1",
+    "es6-promise": "^4.2.8",
+    "express": "^4.17.1",
+    "express-sanitizer": "^1.0.5",
+    "express-session": "^1.17.0",
+    "googleapis": "^39.2.0",
+    "isomorphic-fetch": "^2.2.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.12.6",
+    "mongoose-paginate-v2": "^1.3.9",
+    "node-fetch": "^2.6.1",
+    "nodemailer": "^6.4.10",
+    "nodemon": "^2.0.7",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.1.0",
+    "uuid": "^7.0.3",
+    "validator": "^13.0.0"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^4.3.0",
+    "node-sass": "^4.14.0"
+  }
+}

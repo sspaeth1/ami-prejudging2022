@@ -1,0 +1,63 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container index centerTextContainer">
+    
+                <% if(!currentUser){ %>
+               <div class="row indexNonJudge">
+                  <div class="col-8 ">
+                    <h5> <a href="mailto:mandy@meddrawstudio.com, shlomo@biochromatic.com"> Contact us</a> to become a future judge</h5><br>
+                    <hr>
+                    <br>
+                    <div class="judgeLogin">  
+                    <h4 class="orange font-weight-bold"> Judges  <a href="/login">Login Here</a></h4>
+                    </div>
+                    
+                <% }else{  %>
+                    <div class="row">
+                        <div class="col-8 ">
+                    <h1> Welcome <%= currentUser.firstName %>&nbsp;<%= currentUser.lastName %></h1>
+                    <p>    Thank you for volunteering to judge the annual Salon. Please read these documents  to prepare for judging: 
+                       </p>
+                <% } %>
+           
+            <br>
+            <br>
+           
+        </div>
+        <div class="col-4 annualLogo">
+            <!-- <img src="images/AMI2020_75.png" class="annualLogo" alt="AMI Annual Conference"> -->
+        </div>
+    </div>    
+
+    <div class="row">
+        <div class="col-12">
+            <h3>Announcing the <%= new Date().getFullYear() %> Virtual Salon!</h3>
+
+<p>The Board of Governors and Professional Exhibits Committee are excited to announce that we will be hosting a virtual 2020 AMI Salon! As in years past, the submission process will be online, and the Salon will be displayed virtually on ami.org. In addition, the Salon will be judged, and winners will be announced later this year. We are still working out the exact schedule for salon entry deadlines, opening date, and awards announcements. This information will be shared in the next couple of weeks. We look forward to carrying on the tradition of being inspired by the great work of our members at our annual Salon!</p>
+
+            <!-- <h2> Important Dates:</h2>
+            <h3> Date DBD</h3>
+            <p>
+                Day of Judging. Have judges also determine Student Best of Show (Still Media) and Student Best of Show (New Media). This usually after lunch after all the teams have completed student judging.
+            </p>
+            <h3> Date DBD</h3>
+            <ul>
+                <li>3:30 p.m.  Arrive</li>
+                <li> 8:30 a.m. breakfast</li>
+                <li> 4:00 -5:00 p.m. Group collaboration</li>
+            </ul> -->
+        </div>
+        <br>
+        <hr>
+        <ul class="indexLinks">
+            <li><a href="/generalGuidelines" class="linkOrange lineSpaceing2">Salon Judging Guidelines</a></li>
+            <li><a href="/guidelinesPrejudging"  class="linkOrange lineSpaceing2">Salon Prejudging Guidelines</a></li>
+            <li><a href="/appendixA"  class="linkOrange lineSpaceing2">Appendix A – Salon Categories</a></li>
+            <li><a href="/appendixB"  class="linkOrange lineSpaceing2"> Appendix B – History of Salon Judging</a></li>
+        </ul>
+    </div>
+</div>
+
+
+  
+    <%- include('partials/footer.ejs') %>

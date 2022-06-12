@@ -1,0 +1,28 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container-logIn">
+<main class="d-flex justify-content-center m-4 singlePage align-items-center">
+    <div class="col-md-4 signInBox">
+        <h1 class="formField">Forgot Password</h1>
+        <form action="/forgot" method="POST" class="form-group">
+       
+           <label for="email">  <span class="regAdmin"></span>
+               <input type="email" name="email" placeholder="E-mail" autofocus class="form-control-lg m-2"></label>
+           </label>
+            
+            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Reset Password">
+        </form>
+
+     
+    </div>
+</main>
+
+   <section class="loginLinks container ">
+    <hr>
+  
+</section> 
+
+</div>
+
+
+<%- include('partials/footer.ejs') %>

@@ -1,0 +1,27 @@
+<%- include('partials/header')%>
+
+<div class="container">
+
+    <h1 class="d-flex justify-content-center mt-5">Add a new Salon Entry</h1>
+      <div class="d-flex justify-content-center">
+        <form class="" action="/artentries" method="POST">
+          <input required class="form-control m-3" type="text" name="artentries[category]" placeholder="Category">
+          <input required class="form-control m-3" type="text" name='artentries[title]' value='' placeholder='Piece Title'>
+          <input  class="form-control m-3" type='text' name='artentries[image]' placeholder="Image URL">
+    <!-- <input class="form-control m-3" type="text" name="artentries[inviteeStatus]" placeholder="Invitee Status">
+          <input  class="form-control m-3" type="text" name="artentries[category]" placeholder=" Category">
+          <input class="form-control m-3" type="text" name="artentries[medium]" placeholder="Medium">
+    -->     <input  class="form-control m-3" type="text" name="artentries[format]" placeholder="Format">
+          <textarea required class="form-control m-3" type="textarea" name="artentries[primaryAudience]" placeholder="Primary Audience" ></textarea>
+          <input class='form-control m-3' type="text" name="artentries[description]" value="" placeholder="Description">
+          <a href="../images/logo.png" class=""></a>
+
+          <button class='btn btn-primary lg btn-block m-3' type="post" name="button" onclick="function clicked(){console.log('button clicked')}">Submit New Entry</button>
+
+          <!-- <input type="button" name="" value="" placeholder="Submit entry" onclick="function clicked(){console.log('buttton clicked')}"> -->
+      </form>
+    </div>
+      <a href="/artentries" class="d-flex justify-content-center">Go Back</a>
+</div>
+
+<%- include('partials/footer')%>

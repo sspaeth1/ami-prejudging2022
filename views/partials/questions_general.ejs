@@ -1,0 +1,451 @@
+
+    <script>
+        //save radio selection
+
+        function radioSelect( event, entryId){  
+            const el =  event.target;
+ 
+
+         
+
+            if(el.checked) {
+                const entryId = window.location.pathname.substring(12);
+                const selectedRadio = el.value; 
+                const getQuestionNum = el.parentElement.parentElement.classList[0];
+                const user =  $("#user").text();
+                const category = $('h1.fullSpan span').text();
+                const changeColorLive = $('.ui-state-active').attr('style', 'background: #467946')
+
+
+                console.log({ entryId, getQuestionNum, selectedRadio, notes});
+
+
+                $.ajax('/score', {
+                type: 'POST', 
+                data: { getQuestionNum: getQuestionNum,
+                        selectedRadio: selectedRadio,
+                        entryId: entryId,
+                        category: category,
+
+                     },
+                dataType: 'json',
+                success: function (data, status, xhr) {
+                    console.log(data);
+                    console.log(user);
+                },
+                error: function (jqXhr, textStatus, errorMessage) {
+                    console.log(errorMessage);
+                    }
+                    });    
+            }
+
+          
+         }
+
+</script>
+
+  <script>
+      $( function() {
+        $( "#accordion1" ).accordion({
+            active:false,
+          collapsible: true,
+          heightStyle: "content"
+        });
+      });
+      $( function() {
+        $( "#accordion2" ).accordion({
+            active:false,
+          collapsible: true,
+          heightStyle: "content"
+        });
+      });
+  </script>
+
+
+
+
+<section id="scoring" name="">
+    <h1 class="ratingFormHeader"> 
+        <span> Scoring   </span> 
+        <ul>
+            <li>Click on a question and the toggle will open with the radio button select options </li>
+            <li>When you click a radio button the selection will be recorded, the question will then turn green</li>
+            <li>In order to save notes, write your quesitons or thoughts for later and then once you click "Submit & mark complete"  your notes will be recorded. At this time the art entry be recorded as scored.</li>
+          </ul>
+        <hr>
+   
+        <p> Part I: Communication/Problem Solving: </p>
+    <div id="accordion1" class="<%= artentries.category %>"  >
+     
+         <h3 class="" aria-expanded="false">1: Conveys the message  </h3>
+            <div class="ratingFormSubHeader " > 
+                <form action="/show" method="POST" class="gnrl_part1_1_message ">
+                    <p>Generally, medical/life sciences art is produced to convey a specific message or idea. How well does the illustration tell the story identified in the statement of purpose?</p>
+                  
+                    <label for="1-0">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-0" name="rating" value="0"  <%= gnrl_part1_1_message == 0 ? 'checked' : '' %> /> 
+                        0 Failure 
+                    </label>
+                    <label for="1-1">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-1" name="rating" value="1"  <%= gnrl_part1_1_message == 1 ? 'checked' : '' %> /> 
+                        1 Minimal/Poor      
+                    </label>
+                    <label for="1-2">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-2" name="rating" value="2"  <%= gnrl_part1_1_message == 2 ? 'checked' : '' %> /> 
+                        2 Fair/low    
+                    </label>
+                    <label for="1-3">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-3" name="rating" value="3"  <%= gnrl_part1_1_message == 3 ? 'checked' : '' %> /> 
+                        3 Average / Adequate
+                    </label>
+                    <label for="1-4">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-4" name="rating" value="4"   <%= gnrl_part1_1_message == 4 ? 'checked' : '' %> />  
+                        4 Very Good / High   
+                    </label>
+                    <label for="1-5">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="1-5" name="rating" value="5"   <%= gnrl_part1_1_message == 5 ? 'checked' : '' %> /> 
+                        5 Excellent / Very High   
+                    </label>
+                 </form>
+        </div>
+         <h3 class="">2: Appropriate for the intended audience:</h3>
+            <div class="ratingFormSubHeader"> 
+                <form action="/show" method="POST" class="gnrl_part1_2_audience">
+                    <p>The simplicity or complexity of the artwork should be appropriate for the knowledge of the audience. For example, the medical/scientific content should match the background and knowledge of the intended end user, and informational complexity should be built on a foundation of relevance to that audience. Overloading with professional-level informational detail for the layman or the opposite, reduction of information into simplistic terms for an expert audience, would define an inappropriate content level.</p>
+                  
+                    <label for="2-0">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="2-0" name="rating" value="0" <%= gnrl_part1_2_audience == 0 ? 'checked' : '' %> /> 
+                        0 Failure 
+                    </label>
+                    <label for="2-1">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="2-1" name="rating" value="1" <%= gnrl_part1_2_audience == 1 ? 'checked' : '' %> /> 
+                        1 Minimal/Poor      
+                    </label>
+                    <label for="2-2">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="2-2" name="rating" value="2"  <%= gnrl_part1_2_audience == 2 ? 'checked' : '' %> /> 
+                        2 Fair/low    
+                    </label>
+                    <label for="2-3">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="2-3" name="rating" value="3" <%= gnrl_part1_2_audience == 3 ? 'checked' : '' %> /> 
+                        3 Average / Adequate
+                    </label>
+                    <label for="2-4">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="2-4" name="rating" value="4"  <%= gnrl_part1_2_audience == 4 ? 'checked' : '' %> /> 
+                        4 Very Good / High   
+                    </label>
+                    <label for="2-5">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="2-5" name="rating" value="5" <%= gnrl_part1_2_audience == 5 ? 'checked' : '' %> /> 
+                        5 Excellent / Very High   
+                    </label>
+                 </form>
+        </div>
+         <h3 class="">3: Degree of problem solving: </h3>
+            <div class="ratingFormSubHeader">
+               <form action="/show" method="POST" class="gnrl_part1_3_problemSolving">
+                    <p>Consider the degree of problem solving expressed in the illustration and/or the uniqueness of the concept in the pictorial solution. Take into account obstacles presented by the conceptual and technical parameters of the job, as per the entry’s statement of purpose.</p>
+                  
+                    <label for="3-0">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="3-0" name="rating" value="0" <%= gnrl_part1_3_problemSolving == 0 ? 'checked' : '' %> /> 
+                        0 Failure 
+                    </label>
+                    <label for="3-1">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="3-1" name="rating" value="1" <%= gnrl_part1_3_problemSolving == 1 ? 'checked' : '' %> /> 
+                        1 Minimal/Poor      
+                    </label>
+                    <label for="3-2">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="3-2" name="rating" value="2" <%= gnrl_part1_3_problemSolving == 2 ? 'checked' : '' %> /> 
+                        2 Fair/low    
+                    </label>
+                    <label for="3-3">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="3-3" name="rating" value="3" <%= gnrl_part1_3_problemSolving == 3 ? 'checked' : '' %> /> 
+                        3 Average / Adequate
+                    </label>
+                    <label for="3-4">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="3-4" name="rating" value="4" <%= gnrl_part1_3_problemSolving == 4? 'checked' : '' %> /> 
+                        4 Very Good / High   
+                    </label>
+                    <label for="3-5">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="3-5" name="rating" value="5" <%= gnrl_part1_3_problemSolving == 5 ? 'checked' : '' %> /> 
+                        5 Excellent / Very High   
+                    </label>
+                 </form>
+        </div>
+         <h3 class="">4: Accuracy of medical or scientific information represented:</h3>
+            <div class="ratingFormSubHeader">
+                <form action="/show" method="POST" class="gnrl_part1_4_accuracy">
+               
+                    <p>The information must be accurate, depicting currently accepted standards of biological and anatomical relationships, relative scale and proportions. Pictorial manipulation or distortion of anatomical/scientific information is sometimes necessary or even preferred, but it should be done clearly, with purpose and knowledge. It should not be misleading or cause confusion. Note: this criterion is double weighted.</p>
+                  
+                    <label for="4-0">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="4-0" name="rating" value="0" <%= gnrl_part1_4_accuracy == 0 ? 'checked' : '' %> /> 
+                        0 Failure 
+                    </label>
+                    <label for="4-2">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="4-2" name="rating" value="2"  <%= gnrl_part1_4_accuracy == 2 ? 'checked' : '' %> /> 
+                        2 Minimal/Poor      
+                    </label>
+                    <label for="4-4">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="4-4" name="rating" value="4"  <%= gnrl_part1_4_accuracy == 4 ? 'checked' : '' %> /> 
+                        4 Fair/low    
+                    </label>
+                    <label for="4-6">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="4-6" name="rating" value="6" <%= gnrl_part1_4_accuracy == 6 ? 'checked' : '' %>  /> 
+                        6 Average / Adequate
+                    </label>
+                    <label for="4-8">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="4-8" name="rating" value="8" <%= gnrl_part1_4_accuracy == 8 ? 'checked' : '' %> /> 
+                        8 Very Good / High   
+                    </label>
+                    <label for="4-10">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="4-10" name="rating" value="5" <%= gnrl_part1_4_accuracy == 5 ? 'checked' : '' %> /> 
+                        10 Excellent / Very High   
+                    </label>
+                 </form>
+        </div>
+         <h3 class=""> 5: Clarity:</h3>
+            <div class="ratingFormSubHeader">
+                <form action="/show" method="POST" class="gnrl_part1_5_clarity">
+                    <p>The pictorial or dimensional (e.g. anatomical models) information should be clear, direct, precise, and easily read. It should be unencumbered with excessive, confusing, and distracting peripheral information. When the artwork is presented as part of a series, information flow and consistency are taken into consideration.</p>
+                  
+                    <label for="5-0">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="5-0" name="rating" value="0" <%= gnrl_part1_5_clarity == 0 ? 'checked' : '' %> /> 
+                        0 Failure 
+                    </label>
+                    <label for="5-1">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="5-1" name="rating" value="1" <%=  gnrl_part1_5_clarity == 1 ? 'checked' : '' %> /> 
+                        1 Minimal/Poor      
+                    </label>
+                    <label for="5-2">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="5-2" name="rating" value="2" <%=  gnrl_part1_5_clarity == 2 ? 'checked' : '' %> /> 
+                        2 Fair/low    
+                    </label>
+                    <label for="5-3">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="5-3" name="rating" value="3" <%=  gnrl_part1_5_clarity == 3 ? 'checked' : '' %> /> 
+                        3 Average / Adequate
+                    </label>
+                    <label for="5-4">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="5-4" name="rating" value="4" <%=  gnrl_part1_5_clarity == 4 ? 'checked' : '' %> /> 
+                        4 Very Good / High   
+                    </label>
+                    <label for="5-5">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="5-5" name="rating" value="5" <%=  gnrl_part1_5_clarity == 5 ? 'checked' : '' %> /> 
+                        5 Excellent / Very High   
+                    </label>
+                 </form>
+        </div>
+    </div>
+
+        <p>  Part II: Technique </p>
+        <div id="accordion2" class="<%= artentries.category %>"  >
+         
+         <h3 class=""> 6: Effectiveness of technique and media for the intended presentation format:</h3>
+            <div class="ratingFormSubHeader">
+                <form action="/show" method="POST" class="gnrl_part2_6_technique">
+                    <p>All basic reproduction criteria for the intended presentation format should be met, including: appropriate aspect ratio; proper use of color, tone, line, and type within the reproduction limitations of the format; size of rendered original in relation to final format; appropriate level of (reproducible) graphic complexity.</p>
+                  
+                    <label for="6-0">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-0" name="rating" value="0"  <%=  gnrl_part2_6_technique == 0 ? 'checked' : '' %> />
+                        0 Failure 
+                    </label>
+                    <label for="6-1">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-1" name="rating" value="1"  <%=  gnrl_part2_6_technique == 1 ? 'checked' : '' %> />
+                        1 Minimal/Poor      
+                    </label>
+                    <label for="6-2">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-2" name="rating" value="2"  <%=  gnrl_part2_6_technique == 2 ? 'checked' : '' %> />
+                        2 Fair/low    
+                    </label>
+                    <label for="6-3">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-3" name="rating" value="3"  <%=  gnrl_part2_6_technique == 3 ? 'checked' : '' %> />
+                        3 Average / Adequate
+                    </label>
+                    <label for="6-4">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-4" name="rating" value="4"  <%=  gnrl_part2_6_technique == 4 ? 'checked' : '' %> />
+                        4 Very Good / High   
+                    </label>
+                    <label for="6-5">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="6-5" name="rating" value="5"  <%=  gnrl_part2_6_technique == 5 ? 'checked' : '' %> />
+                        5 Excellent / Very High   
+                    </label>
+                 </form>
+        </div>
+
+         <h3 class="">7: Composition: </h3>
+            <div class="ratingFormSubHeader">
+                <form action="/show" method="POST" class="gnrl_part2_7_composition">
+                    <p>The effective use of design elements to focus attention via placement and use of color, tone, or line; contrast; dynamics of form and shape; balance; unity of elements; and use of space. In illustrations where mood and drama are part of the treatment used to enhance the message or storytelling, evaluate the effectiveness of color and scenic lighting to create special effects. If 3D software is used, how effective is the framing, choice of camera lens, camera view and/or lighting?</p>               
+                    <label for="7-0">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="7-0" name="rating" value="0"  <%=  gnrl_part2_7_composition == 0 ? 'checked' : '' %> />
+                        0 Failure 
+                    </label>
+                    <label for="7-1">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="7-1" name="rating" value="1" <%=  gnrl_part2_7_composition == 1 ? 'checked' : '' %> />
+                        1 Minimal/Poor      
+                    </label>
+                    <label for="7-2">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="7-2" name="rating" value="2" <%=  gnrl_part2_7_composition == 2 ? 'checked' : '' %> />
+                        2 Fair/low    
+                    </label>
+                    <label for="7-3">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="7-3" name="rating" value="3" <%=  gnrl_part2_7_composition == 3 ? 'checked' : '' %> />
+                        3 Average / Adequate
+                    </label>
+                    <label for="7-4">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="7-4" name="rating" value="4" <%=  gnrl_part2_7_composition == 4 ? 'checked' : '' %> />
+                        4 Very Good / High   
+                    </label>
+                    <label for="7-5">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="7-5" name="rating" value="5"  <%=  gnrl_part2_7_composition == 5 ? 'checked' : '' %> />
+                        5 Excellent / Very High   
+                    </label>
+                 </form>
+        </div>
+         <h3 class="">8: Draftsmanship: </h3>
+            <div class="ratingFormSubHeader">
+                <form action="/show" method="POST" class="gnrl_part2_8_draftsmanship">
+                    <p>Overall drawing and rendering skill displayed in portraying objects and their setting, with attention to correct proportions and scale. When creating the illusion of depth, space and form, biological and medical art should exhibit dimensional quality, convincing perspective and effective use of form lighting and scenic lighting. If 3D software-based models are utilized in creation of the artwork, take into account whether or not objects appear properly proportioned and scaled with appropriate textures mapped to display the same qualities expected in non-3D media.</p>
+                  
+                    <label for="8-0">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="8-0" name="rating" value="0" <%=  gnrl_part2_8_draftsmanship == 0 ? 'checked' : '' %> />
+                        0 Failure 
+                      </label>
+                    <label for="8-1">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="8-1" name="rating" value="1"   <%=  gnrl_part2_8_draftsmanship == 1 ? 'checked' : '' %> />
+                        1 Minimal/Poor      
+                    </label>
+                    <label for="8-2">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="8-2" name="rating" value="2"  <%=  gnrl_part2_8_draftsmanship == 2 ? 'checked' : '' %> />
+                        2 Fair/low    
+                    </label>
+                    <label for="8-3">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="8-3" name="rating" value="3" <%=  gnrl_part2_8_draftsmanship == 3 ? 'checked' : '' %> />
+                        3 Average / Adequate
+                    </label>
+                    <label for="8-4">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="8-4" name="rating" value="4"  <%=  gnrl_part2_8_draftsmanship == 4 ? 'checked' : '' %> />
+                        4 Very Good / High   
+                    </label>
+                    <label for="8-5">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="8-5" name="rating" value="5"  <%=  gnrl_part2_8_draftsmanship == 5 ? 'checked' : '' %> />
+                        5 Excellent / Very High   
+                    </label>
+                 </form>
+        </div>
+         <h3 class="">9: Craftsmanship:</h3>
+            <div class="ratingFormSubHeader">
+                <form action="/show" method="POST" class="gnrl_part2_9_craftsmanship">
+                    <p>The overall level of skill demonstrated in the application and handling of the technique and media.</p>
+                  
+                    <label for="9-0">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="9-0" name="rating" value="0"  <%=  gnrl_part2_9_craftsmanship == 0 ? 'checked' : '' %> />
+                        0 Failure 
+                    </label>
+                    <label for="9-1">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="9-1" name="rating" value="1"  <%=  gnrl_part2_9_craftsmanship == 1 ? 'checked' : '' %> />
+                        1 Minimal/Poor      
+                    </label>
+                    <label for="9-2">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="9-2" name="rating" value="2"  <%=  gnrl_part2_9_craftsmanship == 2 ? 'checked' : '' %> />
+                        2 Fair/low    
+                    </label>
+                    <label for="9-3">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="9-3" name="rating" value="3"  <%=  gnrl_part2_9_craftsmanship == 3? 'checked' : '' %> />
+                        3 Average / Adequate
+                    </label>
+                    <label for="9-4">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="9-4" name="rating" value="4"   <%=  gnrl_part2_9_craftsmanship == 3 ? 'checked' : '' %> />
+                        4 Very Good / High   
+                    </label>
+                    <label for="9-5">
+                        <input onclick="radioSelect( event, '<%= artentries.id %>');" type="radio" id="9-5" name="rating" value="5"  <%=  gnrl_part2_9_craftsmanship == 4 ? 'checked' : '' %> />
+                        5 Excellent / Very High   
+                    </label>
+                 </form>
+        </div>
+    </ul>
+</div>
+
+<p> Notes and Submit </p>
+
+        <form action="/show" method="POST" class="notesSubmit">
+<p> <%= artentries.score_general %> </p>
+            <label for="notes">
+                <textarea type="text" id="notes" name="notes" rows="15" cols="50" placeholder="Thoughts?"><%= complete === true? notes : notes %></textarea>
+            </label>
+
+      
+            <% if(complete === true){ %>
+                <button id="buttonComplete" type="button" class="scoreSubmitBtn btn btn-success btn-block btn-lg" onclick="notesAndComplete()" true> Marked as Complete</button>
+
+             <% } else{ %>
+                    <button id="buttonComplete" type="button" class="scoreSubmitBtn btn btn-warning btn-block btn-lg" onclick="notesAndComplete()"  > Submit & mark complete</button>            
+              <%  } %>
+              <button id="buttonCompleteChecked" type="button" class="scoreSubmitBtn btn btn-success btn-block btn-lg" onclick="notesAndComplete()" style="display:none" > Marked as Complete</button>
+
+         </form>
+
+</h1>
+</section>
+<script>
+    function notesAndComplete(){  
+       const entryId = window.location.pathname.substring(12);
+       const category = $('h1.fullSpan span').text();
+       const complete =   document.querySelector('button#buttonComplete').toggleAttribute('true')
+       const notes = $("#notes").val();
+       const changeColorLive = $('.ui-state-active').attr('style', 'background: #467946');
+       document.querySelector('button#buttonComplete').toggleAttribute('true')
+
+
+              $.ajax('/score', {
+              type: 'POST', 
+              data: {entryId: entryId,
+                    category: category,
+                    complete: complete ? true: false,
+                    notes: notes ? notes : "" ,
+                   },
+              dataType: 'json',
+              success: function (data, status, xhr) {
+
+              },
+              error: function (jqXhr, textStatus, err) {
+                  console.log("ajax  notes and submit: " + err.message + "id:" + entryId);
+                  }
+              });
+        
+              $( document ).ajaxComplete(function() {
+                   
+                $('button#buttonComplete').prop('style', "display:none");
+                $('button#buttonCompleteChecked').prop('style', "display:inline-block");
+
+             });
+          }
+</script>
+
+
+
+<script>
+            
+  function checkQuestionScored(){
+   
+    const part1 =  window.document.querySelectorAll('#accordion1 input' );
+    const part2 =  window.document.querySelectorAll('#accordion2 input' );
+
+      for(let i = 0; i < part1.length -1 ; i++ ){
+       
+        if(part1[i].defaultChecked === true){
+          part1[i].parentNode.parentNode.parentNode.previousSibling.previousSibling.setAttribute("class","green");
+        }
+    }
+
+      for(let i = 0; i < part2.length -1 ; i++ ){
+       
+        if(part2[i].defaultChecked === true){
+          part2[i].parentNode.parentNode.parentNode.previousSibling.previousSibling.setAttribute("class","green");
+        }
+    }
+  } 
+
+  window.document.onload = checkQuestionScored();
+
+
+</script>

@@ -1,0 +1,31 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container-logIn">
+<main class="d-flex justify-content-center m-4 singlePage align-items-center">
+    <div class="col-md-4 signInBox">
+        <h1 class="formField">Update Password</h1>
+        <form action="/reset/<%= token %>" method="POST" class="form-group">
+            <legend>Reset Password</legend>
+           <label for="passwprd">  <span class="regAdmin"></span>
+               <input type="password" name="email" placeholder="New Password" autofocus class="form-control-lg m-2"></label>
+           </label>
+           <label for="passwordConfirm">  <span class="regAdmin"></span>
+            <input type="password" name="passwordConfirm" placeholder="Confirm Password" autofocus class="form-control-lg m-2"></label>
+        </label>
+            
+            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Reset Password">
+        </form>
+
+     
+    </div>
+</main>
+
+   <section class="loginLinks container ">
+    <hr>
+  
+</section> 
+
+</div>
+
+
+<%- include('partials/footer.ejs') %>

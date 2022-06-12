@@ -1,0 +1,429 @@
+<%- include('partials/header.ejs') %>
+
+<script>
+  //active menu highlight
+   $(document).ready(function(){
+          $('a[ href="/judgingGroups"]').attr("style", "background-color:orange; color:#fff;");
+       });
+</script>
+
+
+
+
+<h1  class="fullSpan">Judging Groups</h1>
+
+  <article class="appendixContainer">
+
+  <section>
+
+    
+    
+    <% if(currentUser.Admin){ %>
+    
+      <h2> Admin viewBox</h2>
+
+    
+    <div class="groups">
+      <h4>Group 1</h4>
+       <p>Select multiples with cntrl  click:</p>
+       <form action="/addJudgeCategories" method="POST">
+         <label for="categories">Choose Categories:</label>
+         <select name="categories" id="group1" multiple>
+           <option value="A1">A1</option>
+           <option value="A2">A2</option>
+           <option value="B">C</option>
+           <option value="C">C</option>
+           <option value="D">D</option>
+           <!-- <option value="E">E</option> -->
+           <option value="F1">F1</option>
+           <option value="F2">F2</option>
+           <option value="F3">F3</option>
+           <option value="F4">F4</option>
+           <option value="G1">G1</option>
+           <option value="G2">G2</option>
+           <option value="G3">G3</option>
+           <option value="G4">G4</option>
+           <option value="G5">G5</option>
+           <option value="I1">I1</option>
+           <option value="I2">I2</option>
+           <option value="I3">I3</option>     
+           <option value="J">J</option>
+           <option value="K">K</option>
+           <option value="L">L</option>
+           <option value="M">M</option>
+          </select>
+         <br><br>
+         <input type="submit" value="Submit" class="btn btn-primary">
+       </form>
+   </div>
+
+   <div class="groups">
+     <h4>Group 2</h4>
+      <p>Select multiples with cntrl  click:</p>
+      <form action="/addJudgeCategories" method="POST">
+       <label for="categories">Choose Categories:</label>
+       <select name="categories" id="group2" multiple>
+         <option value="A1">A1</option>
+         <option value="A2">A2</option>
+         <option value="B">C</option>
+         <option value="C">C</option>
+         <option value="D">D</option>
+         <!-- <option value="E">E</option> -->
+         <option value="F1">F1</option>
+         <option value="F2">F2</option>
+         <option value="F3">F3</option>
+         <option value="F4">F4</option>
+         <option value="G1">G1</option>
+         <option value="G2">G2</option>
+         <option value="G3">G3</option>
+         <option value="G4">G4</option>
+         <option value="G5">G5</option>
+         <option value="I1">I1</option>
+         <option value="I2">I2</option>
+         <option value="I3">I3</option>     
+         <option value="J">J</option>
+         <option value="K">K</option>
+         <option value="L">L</option>
+         <option value="M">M</option>
+        </select>
+       <br><br>
+       <input type="submit" value="Submit" class="btn btn-primary">
+     </form>
+  </div>
+
+  <div class="groups">
+   <h4>Group 5</h4>
+    <p>Select multiples with cntrl  click:</p>
+    <form action="/addJudgeCategories" method="POST">
+     <label for="categories">Choose Categories:</label>
+     <select name="categories" id="group3" multiple>
+       <option value="A1">A1</option>
+       <option value="A2">A2</option>
+       <option value="B">C</option>
+       <option value="C">C</option>
+       <option value="D">D</option>
+       <!-- <option value="E">E</option> -->
+       <option value="F1">F1</option>
+       <option value="F2">F2</option>
+       <option value="F3">F3</option>
+       <option value="F4">F4</option>
+       <option value="G1">G1</option>
+       <option value="G2">G2</option>
+       <option value="G3">G3</option>
+       <option value="G4">G4</option>
+       <option value="G5">G5</option>
+       <option value="I1">I1</option>
+       <option value="I2">I2</option>
+       <option value="I3">I3</option>     
+       <option value="J">J</option>
+       <option value="K">K</option>
+       <option value="L">L</option>
+       <option value="M">M</option>
+      </select>
+     <br><br>
+     <input type="submit" value="Submit" class="btn btn-primary">
+   </form>
+</div>
+
+<div class="groups">
+ <h4>Group 4</h4>
+  <p>Select multiples with cntrl  click:</p>
+  <form action="/addJudgeCategories" method="POST">
+    <label for="categories">Choose Categories:</label>
+    <select name="categories" id="group4" multiple>
+      <option value="A1">A1</option>
+      <option value="A2">A2</option>
+      <option value="B">C</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+      <!-- <option value="E">E</option> -->
+      <option value="F1">F1</option>
+      <option value="F2">F2</option>
+      <option value="F3">F3</option>
+      <option value="F4">F4</option>
+      <option value="G1">G1</option>
+      <option value="G2">G2</option>
+      <option value="G3">G3</option>
+      <option value="G4">G4</option>
+      <option value="G5">G5</option>
+      <option value="I1">I1</option>
+      <option value="I2">I2</option>
+      <option value="I3">I3</option>     
+      <option value="J">J</option>
+      <option value="K">K</option>
+      <option value="L">L</option>
+      <option value="M">M</option>
+     </select>
+    <br><br>
+    <input type="submit" value="Submit" class="btn btn-primary">
+  </form>
+</div>
+
+
+
+
+    <hr>
+
+    <div class="addJudge"></div>
+      <br/>
+      <p>Add Judges:</p>
+      <form action="/addJudgeCategories" method="Post" id="setGroup">
+
+        <input type="text" id="assignGroup" name="email" placeholder="e-mail">
+        <label for="assignGroup" class="assignGroup">
+          Assign Group: 
+          <select name="assignGroup" id="assignGroup">
+            <option value="group1">Group 1</option>
+            <option value="group2">Group 2</option>
+            <option value="group3">Group 5</option>
+            <option value="group4">Group 4</option>
+          </select>
+        </label>
+        <input type="submit" value="Apply judge to category" class="btn btn-primary">
+      </form>
+    </div>
+
+    <hr/>
+
+
+
+
+    <h2> User View </h2>
+    <h4>Group 1</h4>
+    <%= currentUser.name%>
+
+
+    <h4>Group 2</h4>
+      <%= currentUser%>
+
+    <h4>Group 5</h4>
+
+    <h4>Group 4</h4>
+
+
+
+  </section>
+
+
+<% }else{ %>
+
+  <div>
+    <h3>Group 1</h3>
+     <br>
+     <div class="font-weight-bold">Categories:</div>
+
+B editorial,
+C advertising promo,
+G1  interactive: didactic non comercial,
+G2 interactive: didactic  commercial,
+G3 interactive: advertising  promo,
+G4 interactive Gaming
+<div class="font-weight-bold">Judges:</div>
+Kevin	Brennan,
+Heidi	Schlehlein,
+Judy	Rubin,
+Cyndi	Root
+<hr>
+
+
+<h3>Group 2</h3>
+<br>
+<div class="font-weight-bold">Categories:</div>
+A1  didactic intructional noncomercial,
+A2 didactic intructional comercial
+<div class="font-weight-bold">Judges:</div>
+
+Stacy	Cheavens,
+Enid	Hatton,
+Beth	Halasz
+
+<hr>
+<h3>Group 3</h3>
+<br>
+<div class="font-weight-bold">Categories:</div>
+F1 animation didactic noncomercial, 
+F2 animation commercial,
+F3 animation advertising promo
+<div class="font-weight-bold">Judges:</div>
+
+Dena	Matthews,
+Keith	Kasnot,
+Jennifer Fairman, 
+Shlomo Spaeth
+
+
+<hr>
+
+<h3>Group 4</h3>
+<br>
+<div class="font-weight-bold">Categories:</div>
+I3 Student molecular /lifescience,
+L Student animation,
+M Student interactive
+<div class="font-weight-bold">Judges:</div>
+
+Levent	Efe,
+Nicholas	Reback,
+Kenzie	Green,
+Kevin	Millar
+
+<hr>
+
+<h3>Group 5</h3>
+<br>
+<div class="font-weight-bold">Categories:</div>
+D  med legal,
+F4 med legal (animation),
+I2 student surgical clinical procedure,
+<div class="font-weight-bold">Judges:</div>
+
+Jennifer Gentry,
+Taina	Litwak,
+Ian Suk
+
+
+<hr>
+
+<h3>Group 6</h3>
+
+
+<br>
+<div class="font-weight-bold">Categories:</div>
+I1 student didactic intructional anatomical patho,
+J student editorial,
+K student advertising promo
+<div class="font-weight-bold">Judges:</div>
+
+Lisa	Clark,
+Alison	Burke,
+Stefanie	Okemow,
+Gokhan	 Canaz
+
+  </div>
+ 
+
+<!-- 
+  <h1 class="ratingFormHeader">2020 Groups</h1>
+
+  <h2 class="mt-4">Group 1</h2>
+  <h5 class="mt-3 ml-2">Categories</h5>
+    <h6 class="ml-5">  B: Still Media - Editorial </h6>
+    <h6 class="ml-5">  C: Still Media - Advertising and Marketing/Promotional   	</h6>
+    <br>
+      <h5  class="ml-2">Members</h5>
+        <ul class="ml-5">
+          <li> <span class="font-weight-bold">Eleanor Bailey  </span>  ebailey@healthwise.org</li>
+          <li> <span class="font-weight-bold">Lydia Gregg </span>  lgregg6@jhmi.edu</li>
+          <li><span class="font-weight-bold">Carolina Hrejsa  </span> chrejsa@yahoo.com</li>
+          <li><span class="font-weight-bold">Weston DeWolff </span>  weston@chromatincreative.com</li>
+          <li><span class="font-weight-bold">Joe Samson  </span> jcsamson2@gmail.com</li>
+        </ul>
+
+<hr class="mt-5">
+
+<h2 class="mt-4">Group 2</h2>
+<h5 class="mt-3 ml-2">Categories</h5>
+  <h6 class="ml-5">A1. Didactic/Instructional-Non-Commercial     </h6>
+  <h6 class="ml-5">A2. Didactic/Instructional-Commercial   </h6>
+  <br>
+    <h5  class="ml-2">Members</h5>
+      <ul class="ml-5">
+        <li> <span class="font-weight-bold">Amy Zhong  </span>  art@amyzhong.com</li>
+        <li> <span class="font-weight-bold">Megan Foldenauer  </span>  redmeg8@gmail.com</li>
+        <li> <span class="font-weight-bold">Valerie Altounian </span>  valtounian@gmail.com</li>
+        <li> <span class="font-weight-bold">Ni-ka Ford </span> nikaford07@gmail.com</li>
+        <li> <span class="font-weight-bold">Caitlin Mock</span>  cjmock24@gmail.com</li>
+        <li> <span class="font-weight-bold">Hannah Ely</span>  hannah.b.ely@gmail.com</li>
+      </ul>
+
+<hr class="mt-5">
+
+
+<h2 class="mt-4">Group 3</h2>
+<h5 class="mt-3 ml-2">Categories</h5>
+  <h6 class="ml-5">F1. Animation-Didactic/Instructional-Non-Commercial </h6>
+  <h6 class="ml-5">F2. Animation-Didactic/Instructional-Commercial  </h6>
+  <h6 class="ml-5">F3: Advertising and Marketing/Promotional</h6>
+  <h6 class="ml-5"> F4: Motion Media/Animation - Medical Legal </h6>
+  <h6 class="ml-5">G1: Didactic/Instructional – Non-Commercial  </h6>
+  <h6 class="ml-5">G2: Didactic/Instructional – Commercial  </h6>
+  <h6 class="ml-5">G3: Advertising and Marketing/Promotional </h6>
+  <h6 class="ml-5">Gs4: Gaming</h6>
+  <h6 class="ml-5">M. Interactive</h6>
+
+  <br>
+    <h5  class="ml-2">Members</h5>
+      <ul class="ml-5">
+        <li> <span class="font-weight-bold"> Melanie Connolly </span>melanie@mecovisuals.com</li>
+        <li> <span class="font-weight-bold"> Kevin Millar </span> kevin@invivo.com</li>
+        <li> <span class="font-weight-bold"> Judy Rubin </span> jrubinvisuals@gmail.com</li>
+        <li> <span class="font-weight-bold">  Iman Carr</span>  iman.carr@roswellpark.org</li>
+        <li> <span class="font-weight-bold">Jeff Day </span>jday19@jhmi.edu</li>
+      </ul>
+
+<hr class="mt-5">
+
+
+<h2 class="mt-4">Group 4</h2>
+  <h6 class="ml-5">I1: Anatomical/ Pathological</h6>
+  <h6 class="ml-5">L. Animation (Student) </h6>
+
+  <br>
+    <h5  class="ml-2">Members</h5>
+      <ul class="ml-5">
+        <li> <span class="font-weight-bold">Veronica Falconieri Hays</span> veronica@falconierivisuals.com</li>
+        <li> <span class="font-weight-bold"> Donna DeSmet</span>  desmet.donna@mayo.edu</li>
+        <li> <span class="font-weight-bold"> Meredith Hoffman  </span> melehoffman@gmail.com</li>
+        <li> <span class="font-weight-bold">  Maya Shoemaker</span>   maya@shoemakermedical.com</li>
+        <li> <span class="font-weight-bold">Cari Nunziato  </span>cnunzi123@gmail.com</li>
+      </ul>
+
+<hr class="mt-5">
+
+
+<h2 class="mt-4">Group 5</h2>
+  <h6 class="ml-5">D: Medical-Legal</h6>
+  <h6 class="ml-5">I2: Surgical/Clinical Procedures </h6>
+  <h6 class="ml-5">J: Editorial</h6>
+  <h6 class="ml-5">K: Advertising and Marketing/Promotional</h6>
+
+  <br>
+    <h5  class="ml-2">Members</h5>
+      <ul class="ml-5">
+        <li> <span class="font-weight-bold">Pat Thomas</span> pat@patmedicalart.com</li>
+        <li> <span class="font-weight-bold"> Taina Litwak</span>  taina@litwakillustration.com</li>
+        <li> <span class="font-weight-bold"> Peg Gerrity </span>  pg@peggerrity.com</li>
+        <li> <span class="font-weight-bold">  Alison Burke </span>  aburke@nejm.org</li>
+        <li> <span class="font-weight-bold">Virginia M Ferrante-Iqbal </span> ferrante.virginia@gmail.com</li>
+      </ul>
+
+<hr class="mt-5">
+
+
+<h2 class="mt-4">Group 6</h2>
+  <h6 class="ml-5">I-3: Molecular/Biological/Life Sciences</h6>
+
+<br>
+  <h5  class="ml-2">Members</h5>
+    <ul class="ml-5">
+      <li> <span class="font-weight-bold">Anthony Baker, CMI </span> anthony.baker@osumc.edu</li>
+      <li> <span class="font-weight-bold">Rochelle Ku</span> rkusciart@gmail.com</li>
+      <li> <span class="font-weight-bold"> Tziporah Thompson </span>  tziporah@gmail.com</li>
+      <li> <span class="font-weight-bold"> Cassio Lynm  </span>cassio.lynm.ami@gmail.com</li>
+      <li> <span class="font-weight-bold">Natalie Koscal </span>  nkoscal@nejm.org</li>
+    </ul>
+
+<hr class="mt-5">
+ -->
+
+
+
+
+
+<% } %>
+  
+</article>
+
+<%- include('partials/footer.ejs') %>
+
+

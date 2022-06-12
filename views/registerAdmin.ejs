@@ -1,0 +1,58 @@
+<%- include('partials/header.ejs') %>
+
+<style> body{background-color:#FFA100} </style>
+
+      
+<main class="d-flex justify-content-center m-4 singlePage align-items-center">
+    <div class="col-md-8 signInBox">
+        <h1 class="formField">Register as Judge</h1>
+        <p class="midgrey _1rem">Please use alphanumerica with no spaces or the following characters $.%,|</p>
+        <form action="/register" method="post" class="form-group regAdmin ">
+            <label for="username"> <span class="regAdmin">Username</span>
+                <input required type="text" name="username" placeholder="Username"  class="form-control-lg m-2" autofocus>
+            </label>
+           <label for="password">  <span class="regAdmin">Password</span>
+                <input required type="password" name="password" placeholder="Password" class="form-control-lg m-2">
+           </label>
+           <label for="firstName">  <span class="regAdmin">First Name</span>
+                <input required type="text" name="firstName" placeholder="First Name" class="form-control-lg m-2">
+            </label>
+            <label for="lastName">  <span class="regAdmin">Last Name</span>
+                <input required type="text" name="lastName" placeholder="Last Name" class="form-control-lg m-2">
+            </label>
+            <label for="email">  <span class="regAdmin">e-mail</span>
+                <input required type="email" name="email" placeholder="john@doe.com" class="form-control-lg m-2">
+            </label>
+            <label for="Judging Group">  <span class="regAdmin">judging Group</span>
+                <input  type="text" name="judgingGroup" placeholder="Group number" class="form-control-lg m-2">
+            </label>
+            <select name="categories[]"></select>
+            <label for="categories[]">  <span class="regAdmin">Categories</span>
+                <input  type="text" name="categories[]" placeholder="Categories" class="form-control-lg m-2">
+            </label>
+            <label for="avatar">  <span class="regAdmin">Judge</span>
+                <input required type="text" name="judge" placeholder="Judge?" class="form-control-lg m-2">
+            </label>
+            <label for="avatar">  <span class="regAdmin">Super User</span>
+                <input required type="text" name="isAdmin" placeholder="Super User" class="form-control-lg m-2">
+            </label>
+
+            <button class="btn btn-lg btn-primary m-2 ">Register</button>
+        </form>
+        <p class="midgrey">Already registered? <a href="/register" %> >Login</p></a> </p> 
+    </div>
+</main>
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<%- include('partials/footer.ejs') %>
+

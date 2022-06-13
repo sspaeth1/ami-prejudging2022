@@ -149,7 +149,7 @@ router.get("/ballots", (req, res) => res.render("ballots", { JudgeGroups }));
 
 router.get("/judgingForms", (req, res) => res.render("judgingForms", { JudgeGroups }));
 
-router.get("/artentries", async function (req, res) {// isLoggedIn, async function (req, res) {
+router.get("/artentries", isLoggedIn, async function (req, res) {
   try {
     let pageCategoryId = req.query.categoryId;
     let complete;
@@ -296,7 +296,7 @@ router.get("/artentries", async function (req, res) {// isLoggedIn, async functi
   }
 });
 
-router.get("/artentries/:id", async (req, res) => { // isLoggedIn, async (req, res) => {
+router.get("/artentries/:id", isLoggedIn, async (req, res) => {
   try {
     let pageCategoryId = Object.keys(req.query)[0]; //req.query.categoryId;
     console.log(` requested params id :  ${JSON.stringify(Object.keys(req.query)[0], null, 4)}`); //req.params

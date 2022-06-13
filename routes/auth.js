@@ -52,7 +52,7 @@ router.post("/register", async (req, res) => {
     User.register(
       user,
       req.body.password,
-      /* isLoggedIn , */ async (err, user) => {
+      isLoggedIn , async (err, user) => {
         try {
           // await passport.authenticate("local", req, res, () => {
           //   req.flash("success", "Welcome " + user.username);

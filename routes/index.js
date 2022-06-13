@@ -175,7 +175,6 @@ router.get("/artentries", async function (req, res) {// isLoggedIn, async functi
         let FindScoreIds = []
 
         findScore.forEach( score=>  FindScoreIds.push(score) );
-        console.log("ooooooooooooooooo" + findScore);
 
         for (var i = 0; i < artentries.length; i++) {
           (function removeWhiteSpaceGetAlphaNum(){
@@ -190,12 +189,12 @@ router.get("/artentries", async function (req, res) {// isLoggedIn, async functi
           let categoryPath = "/" + req.query.categoryId + "/";
 
 
-          let FindScoreId = FindScoreIds.filter(FindScoreId => {
-            // FindScoreId.entryId === artentries[i].id
-            console.log(">>>FindScore>>>>" + FindScoreId.entryId + "<<<<<<<<<<<<<<<<<<<" + "\n" +
-                        ">>>artentries>>>" + artentries[i].id + "<<<<<<" + i + "<<<<<<<<<<<<<" + "\n")
+          // let FindScoreId = FindScoreIds.filter(FindScoreId => {
+          //   // FindScoreId.entryId === artentries[i].id
+          //   console.log(">>>FindScore>>>>" + FindScoreId.entryId + "<<<<<<<<<<<<<<<<<<<" + "\n" +
+          //               ">>>artentries>>>" + artentries[i].id + "<<<<<<" + i + "<<<<<<<<<<<<<" + "\n")
 
-          })
+          // })
 
           let filePathImage = path + ".jpg";
           let filePathVideo = path + ".mp4";
@@ -369,7 +368,6 @@ router.get("/artentries/:id", async (req, res) => { // isLoggedIn, async (req, r
 
     let foundPage = {};
     foundPage = await ArtEntry.findById(req.params.id);
-    console.log("found page" + foundPage);
     let titleAlphaNumeric
     (function removeWhiteSpaceGetAlphaNum(){
       let  removeWhiteSpace=  foundPage.title.replace(/\s/g, "");
@@ -412,15 +410,14 @@ router.get("/artentries/:id", async (req, res) => { // isLoggedIn, async (req, r
               path: filePathVideo,
             })
             .then(function (response) {
-              console.log(filePathVideo);
-              mediaLink = response.link;
-              console.log(" video link: ", response.link);
+                console.log(filePathVideo);
+                mediaLink = response.link;
+                console.log(" video link: ", response.link);
             });
         }
       } catch (err) {
-        amediaLink = "https://i.imgur.com/33E6CfN.jpg";
-        console.log(" catch link: ",  error.error_summary);
-        console.log("response.link: " + response.link.response);
+        console.log(" catch link: ",  err);
+        mediaLink = "https://i.imgur.com/33E6CfN.jpg";
         // console.log(" page catch err: ", err.error);
       }
     }
@@ -434,7 +431,6 @@ router.get("/artentries/:id", async (req, res) => { // isLoggedIn, async (req, r
       DBX_API_KEY: DBX_API_KEY,
       id,
       notes,
-      mediaLink,
       complete,
       JudgeGroups,
       gnrl_part1_1_message,
@@ -483,7 +479,7 @@ router.get("/artentries/:id", async (req, res) => { // isLoggedIn, async (req, r
       req.flash("success", "Marked as completed");
     }
   } catch (err) {
-    console.log("go to :id page catch err: " +  err + err.message);
+    console.log("go to :id page catch err: " +  err)
    // res.redirect("/artentries");
   }
 });

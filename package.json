@@ -38,6 +38,6 @@
     "validator": "^13.0.0"
   },
   "devDependencies": {
-    "clean-css-cli": "^4.3.0",
+    "clean-css-cli": "^4.3.0"
   }
 }

@@ -21,6 +21,7 @@ const keyLookup = {
   K: "19",
   L: "20",
   M: "21",
+  H: "22"
 };
 
 module.exports = keyLookup;

@@ -9915,6 +9915,18 @@ body {
   color: #ffa100;
 }
 
+h4.orange.font-weight-bold{
+  margin:0;
+}
+
+.orange.font-weight-bold > a:hover{
+  text-decoration: none;
+  color: #ffffff;
+}
+div.judgeLogin h4.orange.font-weight-bold > a{
+	color:#ffffff;
+  }
+
 .darkOrange {
   color: #e66700;
 }
@@ -10114,6 +10126,10 @@ section#scoring h1 span {
   font-weight: bold;
 }
 
+#toggleScoringSection{
+  z-index: 10;
+}
+
 .ui-icon {
   transform: scale(2);
 }
@@ -10139,6 +10155,12 @@ section#scoring h1 span {
   bottom: 3%;
   left: 10%;
   width: 144px;
+}
+
+div#entry {
+  padding: 0;
+  margin: 6px;
+  max-width: 25vw;
 }
 
 .imgScore {
@@ -10401,6 +10423,11 @@ div.centerTextContainer h3 {
   box-shadow: 2px 2px 2px orange;
   display: flex;
   justify-content: center;
+  background:orange;
+}
+
+.judgeLogin:hover{
+  background-color: #ffd395;
 }
 
 .judgeLogin:hover {

@@ -7,6 +7,11 @@
        });
 </script>
 
+<style>
+  .complete{
+    border: 2px solid green;
+  }
+</style>
 <h1  class="fullSpan">
   <span class="darkOrange font-weight-bold"><%=  pageCategoryId %>: <%= categorySpecifics[letterIndexKeys[0][pageCategoryId]].type  %> </span>
 <br>
@@ -31,8 +36,11 @@
    <div class="row entries">
     <% artentries.forEach( (artentry, i) => { %>
 
+      <%  findScore.forEach(score => {
+        if(artentries[i].id == score.entryId){
+          console.log( )} }) %>
 
-      <div class="col-lg-4 col-md-6 col-sm-6 mt-5 <%= findScore.id %>" id="item<%= i %>" >
+      <div data-complete="<%= artentries[i].star %>" id="entry" class="col-lg-4 col-md-6 col-sm-6 mt-5 <%= findScore.id %>" id="item<%= i %>" >
         <div class="img-thumbnail " >
 
         <a href="/artentries/<%= artentries[i]._id %>?<%= pageCategoryId %>" >
@@ -63,6 +71,10 @@
 
 
 
+                <!-- findScore.filter((score)=>{
+                  console.log("front end line 67  artentries[i]._id:",  artentries[i]._id );
+                  console.log("front end line 67      score.entryId:", score.complete), "\n";
+                }) -->
 
 
 
@@ -73,13 +85,9 @@
             <p> <div class="orange font-weight-bolder threeQuarterRem ">Primary Audience: </div> <%= artentries[i].primaryAudience %></p>
             <p> <div class="orange font-weight-bolder threeQuarterRem ">Intended purpose: </div><%= artentries[i].intended_purpose.substring(0,50) %>... </p>
 
-
-
-            <% console.log("front end line 78: " + complete) %>
-
-            <% if( artentries[i].judges[currentUser.id])  {  %>
+            <% if( artentries[i].star)  {  %>
                       <div class="scoreThisEntry" id="unscored<%= artentries[i]._id %>" >
-                         <a href="/artentries/<%= artentries[i]._id %>?<%= pageCategoryId %>"  name="<%= artentries[i]._id %>"  class="btn btn-success lg"> Entry Scored: <%= score %></a></div>
+                         <a href="/artentries/<%= artentries[i]._id %>?<%= pageCategoryId %>"  name="<%= artentries[i]._id %>"  class="btn btn-success lg"> Entry Scored</a></div>
 
             <% }else{  %>
               <div class="scoreThisEntry" id="unscored<%= artentries[i]._id %>" >   <a href="/artentries/<%= artentries[i]._id %>?<%= pageCategoryId %>"  name="<%= artentries[i]._id %>"  class="btn btn-primary lg"> Score this entry  <%=  %> </a></div>
@@ -94,5 +102,12 @@
 </div>
 </article>
 
+<script>
+      let checkComplete =  document.querySelectorAll("[data-complete=true]");
+    for(complete of checkComplete ){
+      console.log("CHECK COMPLETE" , complete)
+      complete.classList.add('complete')
+    }
+</script>
 
 <%- include ('partials/footer') %>

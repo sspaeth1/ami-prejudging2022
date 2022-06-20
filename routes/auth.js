@@ -17,7 +17,7 @@ const { isLoggedIn } = require("../middleware");
 const { render } = require("ejs");
 Dotenv.config({ debug: process.env.DEBUG });
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; //SYS
 
 // ===================
 // Authenticate routes
@@ -100,10 +100,11 @@ router.post("/registerAdmin", isLoggedIn, function (req, res) {
 
     User.register(user, req.body.password, function (err, user) {
       try {
-        req.flash("success", "Welcome " + user.username);
-        passport.authenticate("local", req, res, function () {
-          return res.render("registerAdmin", { JudgeGroups });
-        });
+         req.flash("success", "Welcome " + user.username);
+       // passport.authenticate('local', { failureRedirect: '/login', failureMessage: true }),
+        //function(req, res) {
+           res.render("/registerAdmin", { JudgeGroups });
+       // }
       } catch (err) {
         console.log(err);
         res.redirect("/index");
@@ -312,7 +313,7 @@ router.get("/login", async (req, res) => {
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "index",
+    successRedirect: "index", //SYS
     failureFlash: "Login failed",
     failureRedirect: "/login",
   }),

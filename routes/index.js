@@ -281,34 +281,26 @@ router.get("/artentries/:id", isLoggedIn, async (req, res) => {
               entryId: req.params.id,
               judge: req.user.id,
               });
-              GeneralScore.findOne({}, { sort: { '_id' : -1 } }, function(err, newDocs) {
-                if(err){
-                  console.log(err)
-                }else{
-                  let judge = req.user.id;
-                  GeneralScore.findOne({ entryId: req.params.id},function(err,docs){
-                   if(err){
-                    console.log(err)
-                   }else{
-                    let judge = req.user.id;
-                  console.log('line 311 found ', docs)
-                  findScore = docs
-                  console.log('lin3 299');
-                   }
-                  }
-                    )
-                  console.log("post",  newDocs );
-                }
-              }).limit(1);
+              // GeneralScore.findOne({}, { sort: { '_id' : -1 } }, function(err, newDocs) {
+              //   if(err){
+              //     console.log(err)
+              //   }else{
+              //     let judge = req.user.id;
+
+              //     findScore = newDocs;
+              //     console.log("post",  newDocs );
+              //   }
+              // }).limit(1);
               console.log('lin3 294');
           }
+          let judge = req.user.id;
           console.log('line 311 found ', docs)
           findScore = docs
           console.log('lin3 299');
         }
         console.log('lin3 301');
        }
-      )
+          )
 
 
     let {
@@ -413,7 +405,7 @@ router.get("/artentries/:id", isLoggedIn, async (req, res) => {
         // console.log(" page catch err: ", err.error);
       }
     }
-    console.log('line 408', judge);
+
     res.render("show", {
       categorySpecifics,
       letterIndexKeys,

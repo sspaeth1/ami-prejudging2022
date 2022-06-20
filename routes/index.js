@@ -155,9 +155,8 @@ router.get("/artentries", isLoggedIn, async function (req, res) {
     let complete;
 
 
-    console.log('req.query: ' + JSON.stringify(req.query, null, 4));
+    console.log('req.query: ' + JSON.stringify(req.query, null, 4), "\n", 'req.user.id: ' + JSON.stringify(req.user.id, null, 4));
 
-    console.log(req.query.categoryId);
 
     let findScore = await GeneralScore.find({
       judge: req.user.id,
@@ -183,18 +182,14 @@ router.get("/artentries", isLoggedIn, async function (req, res) {
             return titleAlphaNumeric;
           }())
 
+          for (score of FindScoreIds){
+            if(artentries[i].id == score.entryId && score.complete == true){
+              artentries[i].star = true;
+          }}
+
           let path = "/" + req.query.categoryId + "/" + titleAlphaNumeric;
-          console.log("path: "  + path);
           let title = artentries[i].title;
           let categoryPath = "/" + req.query.categoryId + "/";
-
-
-          // let FindScoreId = FindScoreIds.filter(FindScoreId => {
-          //   // FindScoreId.entryId === artentries[i].id
-          //   console.log(">>>FindScore>>>>" + FindScoreId.entryId + "<<<<<<<<<<<<<<<<<<<" + "\n" +
-          //               ">>>artentries>>>" + artentries[i].id + "<<<<<<" + i + "<<<<<<<<<<<<<" + "\n")
-
-          // })
 
           let filePathImage = path + ".jpg";
           let filePathVideo = path + ".mp4";
@@ -237,13 +232,12 @@ router.get("/artentries", isLoggedIn, async function (req, res) {
                   });
               }
             } catch (err) {
-              artentries[i].link = "https://i.imgur.com/33E6CfN.jpg";
-              console.log(" catch link: ", artentries[i].link);
-              console.log("artentries[i] : " + filePathImage);
-              console.log(" page catch err: ", err.error);
+              artentries[i].link = "https://i.imgur.com/9eNEmbc.jpeg";
+              console.log("artentries[i] : " + filePathImage,  err.error.error_summary);
             }
           }
         }
+
         console.log(` ${artentries.length} # of art entries in this category `);
         res.render("artentries", {
           // title: "pagination",
@@ -262,34 +256,6 @@ router.get("/artentries", isLoggedIn, async function (req, res) {
           complete
         });
       });
-
-    //  await ArtEntry.find({},async function (err, artentries) {
-    //     if (err) {
-    //       console.log("Art Entries page: ", err.message);
-    //     }
-    //     for (var i = 0; i < artentries.length; i++) {
-    //       if (artentries[i].folderId) {
-    //        await dbx.usersGetCurrentAccount().then(function (response) {
-    //           console.log("response", response);
-    //         });
-    //       }
-    //     }
-    //     res.render("artentries", {
-    //       artentries,
-    //       findScore,
-    //       DBX_API_KEY,
-    //       pageCategoryId,
-    //       categorySpecifics,
-    //       letterIndexKeys,
-    //     });
-    //   })
-    //     .populate("judge")
-    //     .populate("score_general")
-    //     .exec((err, artEntryFound) => {
-    //       if (err) {
-    //         console.log("art etry populate: " + err.message);
-    //       }
-    //     });
   } catch (err) {
     console.log("go to artentries page catch err: ", err);
     res.redirect("/index");
@@ -297,27 +263,53 @@ router.get("/artentries", isLoggedIn, async function (req, res) {
 });
 
 router.get("/artentries/:id", isLoggedIn, async (req, res) => {
+  console.log('req.query: ' + JSON.stringify(req.query, null, 4), "\n", 'req.user.id: ' + JSON.stringify(req.user.id, null, 4));
+
   try {
     let pageCategoryId = Object.keys(req.query)[0]; //req.query.categoryId;
-    console.log(` requested params id :  ${JSON.stringify(Object.keys(req.query)[0], null, 4)}`); //req.params
+    console.log(` line 300 requested params id :  ${JSON.stringify(Object.keys(req.query)[0], null, 4)}`); //req.params
     let findScore;
+     await GeneralScore.findOne({ entryId: req.params.id, judge: req.user.id },
+      function(err,docs){
+        if(err){
+          console.log( 'line 302 err no entry with that user and entry', err)
+        }
+        else{
+          if( docs == null){
+            console.log("No existing score, creating new score");
+              GeneralScore.create({
+              entryId: req.params.id,
+              judge: req.user.id,
+              });
+              GeneralScore.findOne({}, { sort: { '_id' : -1 } }, function(err, newDocs) {
+                if(err){
+                  console.log(err)
+                }else{
+                  let judge = req.user.id;
+                  GeneralScore.findOne({ entryId: req.params.id},function(err,docs){
+                   if(err){
+                    console.log(err)
+                   }else{
+                    let judge = req.user.id;
+                  console.log('line 311 found ', docs)
+                  findScore = docs
+                  console.log('lin3 299');
+                   }
+                  }
+                    )
+                  console.log("post",  newDocs );
+                }
+              }).limit(1);
+              console.log('lin3 294');
+          }
+          console.log('line 311 found ', docs)
+          findScore = docs
+          console.log('lin3 299');
+        }
+        console.log('lin3 301');
+       }
+      )
 
-    if (!findScore) {
-      console.log("No existing score, creating new score");
-      await GeneralScore.create({
-        entryId: req.params.id,
-        judge: req.user.id,
-      });
-      console.log("user: ", req.user.id);
-    }
-
-    findScore = await GeneralScore.findOne({
-      judge: req.user.id,
-      entryId: req.params.id,
-    })
-      .populate("judge")
-      .populate("entryId")
-      .exec();
 
     let {
       judge: { judge },
@@ -372,7 +364,7 @@ router.get("/artentries/:id", isLoggedIn, async (req, res) => {
     (function removeWhiteSpaceGetAlphaNum(){
       let  removeWhiteSpace=  foundPage.title.replace(/\s/g, "");
          titleAlphaNumeric = removeWhiteSpace.split("_", 1)[0];
-      console.log(titleAlphaNumeric);
+      // console.log(titleAlphaNumeric);
       return titleAlphaNumeric;
     }())
 
@@ -416,12 +408,12 @@ router.get("/artentries/:id", isLoggedIn, async (req, res) => {
             });
         }
       } catch (err) {
-        console.log(" catch link: ",  err);
-        mediaLink = "https://i.imgur.com/33E6CfN.jpg";
+        console.log(" catch link: ",  err.error.error_summary);
+        mediaLink = "https://i.imgur.com/9eNEmbc.jpeg";
         // console.log(" page catch err: ", err.error);
       }
     }
-
+    console.log('line 408', judge);
     res.render("show", {
       categorySpecifics,
       letterIndexKeys,
@@ -479,7 +471,7 @@ router.get("/artentries/:id", isLoggedIn, async (req, res) => {
       req.flash("success", "Marked as completed");
     }
   } catch (err) {
-    console.log("go to :id page catch err: " +  err)
+    console.log("line 463ish, go to :id page catch err: " +  err)
    // res.redirect("/artentries");
   }
 });

@@ -61,7 +61,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #ffffff;
+  background-color: #002632;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -10466,7 +10466,7 @@ div.centerTextContainer h3 {
 }
 
 #displayDescriptions {
-  width: 30%;
+padding:1rem;
 }
 
 #displayImage {

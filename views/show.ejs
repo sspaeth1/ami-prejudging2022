@@ -17,14 +17,6 @@
   </script>
 
 
-<script>
-  function openImageInNewTab() {
-    let image = "<img src='<%= mediaLink %>' >";
-    console.log(image);
-    let w = window.open("");
-        w.document.write(image.outerHTML);
-  }
-  </script>
 
 
 
@@ -117,44 +109,11 @@
             <div class="orange entryDescriptors">Intended purpose: </div><p> <%= artentries.intended_purpose %></p>
        </div>
 
-       <div id="displayImage">
-        <%   if( artentries.category === "A1" ||
-                 artentries.category === "A2" ||
-                 artentries.category === "B" ||
-                 artentries.category === "C" ||
-                 artentries.category === "D" ||
-                 artentries.category === "E" ||
-                 artentries.category === "H" ||
-                 artentries.category === "I1" ||
-                 artentries.category === "I2" ||
-                 artentries.category === "I3" ||
-                 artentries.category === "J" ||
-                 artentries.category === "K"){   %>
-      <a href="<%= mediaLink %>" target="_blank" rel="noreferrer noopener">
-                  <img src="<%= mediaLink %>" class="card-img-top"  alt="<%= artentries.title %>" >
-           </a>
-           <!-- <a href="#" onclick="openImageInNewTab()">
-            <img src="<%= mediaLink %>" class="card-img-top"  alt="<%= artentries.title %>" >
-           </a> -->
-      <%  } else { %>
-              <video class="card-img-top"   controls>
-                <source src="<%= mediaLink %>" type="video/mp4">
-
-                Your browser does not support the video tag.
-              </video>
-            </a>
-      <%  } %>
-
-
-
-    </div>
 
     </div>
 
     <div id="user"><%= artentries.judge %></div>
 
-
-<script src="/js/dropboxFileThumbSort.js"  id="helper" data-name="<%= DBX_API_KEY %>"  type="module"> </script>
 
 </main>
 <%- include('partials/footer') %>

@@ -15,15 +15,7 @@ const { isLoggedIn } = require("../middleware");
 var fetch = require("isomorphic-fetch");
 const { response } = require("express");
 Dotenv.config({ debug: process.env.DEBUG });
-const DBX_API_KEY = process.env.DBX_API_KEY;
 
-const Dropbox = require("dropbox").Dropbox;
-
-const config = {
-  fetch: fetch,
-  accessToken: DBX_API_KEY,
-};
-const dbx = new Dropbox(config);
 
 //==============
 //RESTful routes
@@ -31,13 +23,6 @@ const dbx = new Dropbox(config);
 
 //INDEX route
 router.get("/index", async (req, res) => {
-
-  /*
-  //check if connected to DBX
-  dbx.filesListFolder({
-    path: '/C'
-  }).then(res=>console.log(res)).catch(err=> console.log(err));
-  */
 
   ArtEntry.find({}, function (err, artentries) {
     try {
@@ -178,7 +163,7 @@ router.get("/artentries", isLoggedIn, async function (req, res) {
         for (var i = 0; i < artentries.length; i++) {
           (function removeWhiteSpaceGetAlphaNum(){
             let  removeWhiteSpace=  artentries[i].title.replace(/\s/g, "");
-                titleAlphaNumeric = removeWhiteSpace.split("_", 1)[0];
+                titleAlphaNumeric = removeWhiteSpace.split(" ", 1)[0];
             return titleAlphaNumeric;
           }())
 
@@ -187,55 +172,6 @@ router.get("/artentries", isLoggedIn, async function (req, res) {
               artentries[i].star = true;
           }}
 
-          let path = "/" + req.query.categoryId + "/" + titleAlphaNumeric;
-          let title = artentries[i].title;
-          let categoryPath = "/" + req.query.categoryId + "/";
-
-          let filePathImage = path + ".jpg";
-          let filePathVideo = path + ".mp4";
-          let a = artentries[i].category;
-          if (path.split("-", 1)[0] + "/" === "/" + req.query.categoryId + "/" + req.query.categoryId + "/") {
-            try {
-              if (
-                a === "A1" ||
-                a === "A2" ||
-                a === "B" ||
-                a === "C" ||
-                a === "D" ||
-                a === "E" ||
-                a === "H" ||
-                a === "I1" ||
-                a === "I2" ||
-                a === "I3" ||
-                a === "J" ||
-                a === "K"
-              ) {
-                await dbx
-                  .filesGetTemporaryLink({
-                    path: filePathImage,
-                  })
-                  .then(function (response) {
-                    artentries[i].link = response.link;
-                    console.log(" link: ", response.link);
-                    console.log(filePathImage);
-
-                  });
-              } else {
-                await dbx
-                  .filesGetTemporaryLink({
-                    path: filePathVideo,
-                  })
-                  .then(function (response) {
-                    console.log(filePathVideo);
-                    artentries[i].link = response.link;
-                    console.log(" link: ", response.link);
-                  });
-              }
-            } catch (err) {
-              artentries[i].link = "https://i.imgur.com/9eNEmbc.jpeg";
-              console.log("artentries[i] : " + filePathImage,  err.error.error_summary);
-            }
-          }
         }
 
         console.log(` ${artentries.length} # of art entries in this category `);
@@ -248,7 +184,6 @@ router.get("/artentries", isLoggedIn, async function (req, res) {
           // pages: result.pages,
           artentries,
           findScore,
-          DBX_API_KEY,
           pageCategoryId,
           categorySpecifics,
           JudgeGroups,
@@ -355,56 +290,11 @@ router.get("/artentries/:id", isLoggedIn, async (req, res) => {
     let titleAlphaNumeric
     (function removeWhiteSpaceGetAlphaNum(){
       let  removeWhiteSpace=  foundPage.title.replace(/\s/g, "");
-         titleAlphaNumeric = removeWhiteSpace.split("_", 1)[0];
+         titleAlphaNumeric = removeWhiteSpace.split(" ", 1)[0];
       // console.log(titleAlphaNumeric);
       return titleAlphaNumeric;
     }())
 
-    let a = foundPage.category;
-    let filePathImage = "/" + a + "/" +  titleAlphaNumeric + ".jpg";
-    let filePathVideo = "/" + a + "/" +  titleAlphaNumeric + ".mp4";
-    if (foundPage) {
-      try {
-        if (
-          a === "A1" ||
-          a === "A2" ||
-          a === "B" ||
-          a === "C" ||
-          a === "D" ||
-          a === "E" ||
-          a === "H" ||
-          a === "I1" ||
-          a === "I2" ||
-          a === "I3" ||
-          a === "J" ||
-          a === "K"
-        ) {
-          await dbx
-            .filesGetTemporaryLink({
-              path: filePathImage,
-            })
-            .then(function (response) {
-              console.log("response line 393: " + response)
-              mediaLink = response.link;
-              console.log(" image link: ", response.link);
-            });
-        } else {
-          await dbx
-            .filesGetTemporaryLink({
-              path: filePathVideo,
-            })
-            .then(function (response) {
-                console.log(filePathVideo);
-                mediaLink = response.link;
-                console.log(" video link: ", response.link);
-            });
-        }
-      } catch (err) {
-        console.log(" catch link: ",  err.error.error_summary);
-        mediaLink = "https://i.imgur.com/9eNEmbc.jpeg";
-        // console.log(" page catch err: ", err.error);
-      }
-    }
 
     res.render("show", {
       categorySpecifics,
@@ -412,7 +302,6 @@ router.get("/artentries/:id", isLoggedIn, async (req, res) => {
       pageCategoryId,
       artentries: foundPage,
       score: findScore,
-      DBX_API_KEY: DBX_API_KEY,
       id,
       notes,
       complete,
@@ -476,7 +365,7 @@ router.get("/SampleEntry", function (req, res) {
       res.redirect("index");
     }
 
-    res.render("categories/showSample", { artentries: foundPage, DBX_API_KEY, JudgeGroups });
+    res.render("categories/showSample", { artentries: foundPage,JudgeGroups });
   });
 });
 

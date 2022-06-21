@@ -41,44 +41,7 @@
           console.log( )} }) %>
 
       <div data-complete="<%= artentries[i].star %>" id="entry" class="col-lg-4 col-md-6 col-sm-6 mt-5 <%= findScore.id %>" id="item<%= i %>" >
-        <div class="img-thumbnail " >
 
-        <a href="/artentries/<%= artentries[i]._id %>?<%= pageCategoryId %>" >
-
-
-         <%   if(  artentries[i].category=== "A1" ||
-                  artentries[i].category=== "A2" ||
-                  artentries[i].category=== "B" ||
-                  artentries[i].category=== "C" ||
-                  artentries[i].category=== "D" ||
-                  artentries[i].category=== "E" ||
-                  artentries[i].category=== "H" ||
-                  artentries[i].category=== "I1" ||
-                  artentries[i].category=== "I2" ||
-                  artentries[i].category=== "I3" ||
-                  artentries[i].category=== "J" ||
-                  artentries[i].category=== "K"){   %>
-                    <img src="<%= artentries[i].link %>" class="card-img-top" alt="Image for scoring" >
-                     </a>
-                <%  } else { %>
-                        <video class="card-img-top"   controls>
-                          <source src="<%= artentries[i].link %>" type="video/mp4">
-
-                          Your browser does not support the video tag.
-                        </video>
-                      </a>
-                <%  } %>
-
-
-
-                <!-- findScore.filter((score)=>{
-                  console.log("front end line 67  artentries[i]._id:",  artentries[i]._id );
-                  console.log("front end line 67      score.entryId:", score.complete), "\n";
-                }) -->
-
-
-
-        </div>
         <div class="artEntriesTitle">
 
            <h3><% if (artentries[i].title.toString().length <= 100){ %><%= artentries[i].title  %><% } else{ %><%= artentries[i].title.substring(0,100)+"..." %><% } %></h3>
